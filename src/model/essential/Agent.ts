@@ -43,4 +43,12 @@ export abstract class Agent {
     public makeSeed(isSeed: boolean): void {
         this.isSeed = isSeed;
     }
+
+    get State(): number{
+        return this.state;
+    }
+
+    set State(state: number){
+        this.state = state;
+    }
 }
