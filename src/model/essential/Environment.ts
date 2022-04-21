@@ -24,7 +24,7 @@ export abstract class Environment {
         periods: number,
         NetworkSize: number,
         SeedSize: number,
-        //agentsConfigs: AgentConfig[]
+        //agentsConfigs: AgentConfig.ts[]
         ) {
 
         this.dataHandler.getInstance();
