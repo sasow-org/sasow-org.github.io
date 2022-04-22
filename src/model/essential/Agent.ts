@@ -1,3 +1,4 @@
+import {Action} from "../util/actions/Action";
 
 
 export abstract class Agent {
@@ -6,29 +7,31 @@ export abstract class Agent {
     public static READ: number = 1
     public static PREPARE_FOR_SHARE = 2
 
-    protected state: number
-    protected agent_id: number
-    protected followers: Agent[]
-    protected followings: Agent[]
-    //protected actions: Action[]
-    protected isSeed: boolean
+    private _state: number
+    private _agent_id: number
+    private _followers: Agent[]
+    private _followings: Agent[]
+    private _actions: Action[]
+    private _isSeed: boolean
 
-    constructor(id: number, state: number, isSeed: boolean) {
-        this.state = state
-        this.agent_id = id
-        this.followers = []
-        this.followings = []
-        this.isSeed = isSeed
+    protected constructor(id: number, state: number, isSeed: boolean, actions: Action[]) {
+        this._state = state
+        this._agent_id = id
+        this._isSeed = isSeed
+        this._actions = actions
+        //Initialize lists
+        this._followers = []
+        this._followings = []
     }
 
     public addFriend(agent: Agent): void {
         let exist: boolean = false
 
-        if(agent.agent_id === this.agent_id){
+        if(agent._agent_id === this._agent_id){
             exist = true;
         }else {
-            for(let i = 0; i<this.followers.length; i++){
-                if(this.followers[i].agent_id === agent.agent_id){
+            for(let i = 0; i<this._followers.length; i++){
+                if(this._followers[i]._agent_id === agent._agent_id){
                     exist = true;
                     break;
                 }
@@ -36,19 +39,59 @@ export abstract class Agent {
         }
 
         if(!exist){
-            this.followers.push(agent)
+            this._followers.push(agent)
         }
     }
     //todo add following
     public makeSeed(isSeed: boolean): void {
-        this.isSeed = isSeed;
+        this._isSeed = isSeed;
     }
 
-    get State(): number{
-        return this.state;
+    get state(): number {
+        return this._state;
     }
 
-    set State(state: number){
-        this.state = state;
+    set state(value: number) {
+        this._state = value;
+    }
+
+    get agent_id(): number {
+        return this._agent_id;
+    }
+
+    set agent_id(value: number) {
+        this._agent_id = value;
+    }
+
+    get followers(): Agent[] {
+        return this._followers;
+    }
+
+    set followers(value: Agent[]) {
+        this._followers = value;
+    }
+
+    get followings(): Agent[] {
+        return this._followings;
+    }
+
+    set followings(value: Agent[]) {
+        this._followings = value;
+    }
+
+    get actions(): Action[] {
+        return this._actions;
+    }
+
+    set actions(value: Action[]) {
+        this._actions = value;
+    }
+
+    get isSeed(): boolean {
+        return this._isSeed;
+    }
+
+    set isSeed(value: boolean) {
+        this._isSeed = value;
     }
 }

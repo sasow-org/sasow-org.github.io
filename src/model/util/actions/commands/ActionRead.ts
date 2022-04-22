@@ -6,7 +6,7 @@ export class ActionRead extends Action{
     Execute(agent: Agent): void {
         const p1: number = this.getRandom();
         if(p1/100 > (1-this.probability)){
-            agent.State = Agent.READ;
+            agent.state = Agent.READ;
         }
     }
 
