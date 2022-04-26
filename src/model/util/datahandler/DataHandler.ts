@@ -6,9 +6,10 @@ import {ExperimentConfig} from "../config/ExperimentConfig";
 import {MatrixData} from "../data/MatrixData";
 import {DataHandlerConfig} from "../config/DataHandlerConfig";
 import {RowData} from "../data/RowData";
+import {Agent} from "../../essential/Agent";
 
 export class DataHandler implements IObserver {
-    private static instance: DataHandler;
+    private static _instance: DataHandler;
 
     //variables to acces after to get data to write.
     private _experiment : Experiment;
@@ -16,20 +17,13 @@ export class DataHandler implements IObserver {
     private _simulation : Simulation;
     private _experimentConfig : ExperimentConfig;
 
-    private essentialData : MatrixData ;
-    private detailedData : MatrixData;
+    private _essentialData : MatrixData ;
+    private _detailedData : MatrixData;
 
     private _withInterface : boolean = false;
 
     private _dataHandlerConfig : DataHandlerConfig;
 
-
-    public static getInstance() : DataHandler {
-        if(!DataHandler.instance){
-            DataHandler.instance = new DataHandler();
-        }
-        return DataHandler.instance;
-    }
 
     /*
         public static restartInstance() : void {
@@ -38,23 +32,83 @@ export class DataHandler implements IObserver {
      */
 
     update(): void {
-        if(this._dataHandlerConfig.essentialData) {
-            addLineEssential();
+        if(this._dataHandlerConfig.isEssentialData) {
+            this.addLineEssential();
         }
-        if(this._dataHandlerConfig.detailedData) {
-            addLineDetailed();
+        if(this._dataHandlerConfig.isDetailedData) {
+            this.addLineDetailed();
         }
     }
 
     public addLineDetailed() : void{
-
+        let rdSimulation : RowData  = this._simulation.DataEssential();
+        let rdEnvironment : RowData  = this._environment.DataEssential();
+        this._environment.users.map((user: Agent) => {
+            let rd : RowData = new RowData();
+            rd.addRows(rdSimulation)
+            rd.addRows(rdEnvironment)
+            rd.addRows(user.DataDetailed())
+            this._detailedData.addRow(rd);
+        })
     }
 
     public addLineEssential() : void {
         let rd : RowData = new RowData();
-        let rdSimulation = this._simulation.;
+        let rdSimulation : RowData  = this._simulation.DataEssential();
+        let rdEnvironment : RowData  = this._environment.DataEssential();
+        rd.addRows(rdSimulation);
+        rd.addRows(rdEnvironment);
+        if(this._withInterface){
+            //??? do something
+        }
+        this._essentialData.addRow(rd);
     }
 
+    /*
+    Write Files functions
+     */
+
+    //todo make this with JSON.
+
+    public writeCSVFile() : void {
+        if(this._dataHandlerConfig.isEssentialData){
+            this.writeFileData(this._essentialData, "essential")
+            this._essentialData = new MatrixData();
+        }
+
+        if(this._dataHandlerConfig.isDetailedData){
+            this.writeFileData(this._detailedData, "detailed")
+            this._detailedData = new MatrixData();
+        }
+    }
+
+    private writeFileData(data: MatrixData, mode: String ) : void {
+        //todo create a JSON
+        //todo 1.- create a format for the file name.
+        //todo  like -> date-experimentname-mode.CSV
+    }
+
+
+    /* Getters and Setters */
+
+    public static getInstance() : DataHandler {
+        if(!DataHandler._instance){
+            DataHandler._instance = new DataHandler();
+        }
+        return DataHandler._instance;
+    }
+
+    public static clearInstance() : void {
+        this._instance = null;
+    }
+
+    static get instance(): DataHandler {
+        return this._instance;
+    }
+
+    static set instance(value: DataHandler) {
+        this._instance = value;
+    }
 
     get experiment(): Experiment {
         return this._experiment;
@@ -86,6 +140,22 @@ export class DataHandler implements IObserver {
 
     set experimentConfig(value: ExperimentConfig) {
         this._experimentConfig = value;
+    }
+
+    get essentialData(): MatrixData {
+        return this._essentialData;
+    }
+
+    set essentialData(value: MatrixData) {
+        this._essentialData = value;
+    }
+
+    get detailedData(): MatrixData {
+        return this._detailedData;
+    }
+
+    set detailedData(value: MatrixData) {
+        this._detailedData = value;
     }
 
     get withInterface(): boolean {

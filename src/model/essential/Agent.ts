@@ -3,9 +3,10 @@ import {IDataDetailed} from "../util/data/interfaces/IDataDetailed";
 import {IObservable} from "../util/datahandler/observer/IObservable";
 import {RowData} from "../util/data/RowData";
 import {AgentConfig} from "../util/config/AgentConfig";
+import {Product} from "../util/factory/Product";
 
 
-export abstract class Agent implements IDataDetailed, IObservable{
+export abstract class Agent implements IDataDetailed, IObservable, Product{
     public static SHARED: number = -1
     public static NOREAD: number = 0
     public static READ: number = 1
@@ -19,17 +20,19 @@ export abstract class Agent implements IDataDetailed, IObservable{
     protected _isSeed: boolean
     protected _agentConfig: AgentConfig;
 
-    protected constructor(id: number, state: number, isSeed: boolean, actions: Action[], agentConfig: AgentConfig) {
-        this._state = state
+    protected constructor(id: number, agentConfig: AgentConfig) {
+        this._state = agentConfig.initialState
         this._agent_id = id
-        this._isSeed = isSeed
-        this._actions = actions
+        this._isSeed = agentConfig.isSeed;
+        this._actions = agentConfig.actions;
         //Initialize lists
         this._followers = []
         this._followings = []
         //load config
         this._agentConfig = agentConfig;
     }
+
+    public abstract doActions();
 
     public addFriend(agent: Agent): void {
         let exist: boolean = false
@@ -143,10 +146,13 @@ export abstract class Agent implements IDataDetailed, IObservable{
         rd.addRow(this._agent_id, "agent_id");
         rd.addRow(this._state, "agent_state");
         rd.addRow(this._isSeed, "agent_seed");
-        rd.addRow(this._agentConfig.name, "agent_type");
+        rd.addRow(this._agentConfig.nameConfig, "agent_type");
         return rd;
     }
 
     notifyData(): void {
+    }
+
+    operation() {
     }
 }

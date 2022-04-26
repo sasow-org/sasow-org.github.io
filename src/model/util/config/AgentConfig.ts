@@ -2,30 +2,25 @@ import {Agent} from "../../essential/Agent";
 import {Action} from "../actions/Action";
 
 export class AgentConfig {
-    private _agentInfo: Agent;
     private _quantityAgent: number;
     private _percentageFollowers: number;
     private _percentageFollowings: number;
+    private _isSeed: boolean;
     private _actions: Action[];
-    private _name: String;
+    private _nameConfig: String;
+    private _initialState: number;
 
-    constructor(agentInfo: Agent, quantityAgent: number, percentageFollowers: number, percentageFollowings: number ) {
-        this._agentInfo = agentInfo
+    constructor(initialState: number,agentActions: Action[], isSeed: boolean,quantityAgent: number, percentageFollowers: number, percentageFollowings: number ) {
+        //this._agentInfo = agentInfo
         this._quantityAgent=quantityAgent
         this._percentageFollowers = percentageFollowers
         this._percentageFollowings = percentageFollowings
-        this._actions = this._agentInfo.actions;
-        this._name = "agentDefault";
+        this._actions = agentActions;
+        this._nameConfig = "agentDefault";
+        this._isSeed = isSeed;
+        this._initialState = initialState;
         //        System.out.println("Followers in agentConfig: "+followers+" --> "+name);
         //         System.out.println("Followings in agentConfig: "+followings+" --> "+name);
-    }
-
-    get agentInfo(): Agent {
-        return this._agentInfo;
-    }
-
-    set agentInfo(value: Agent) {
-        this._agentInfo = value;
     }
 
     get quantityAgent(): number {
@@ -60,11 +55,37 @@ export class AgentConfig {
         this._actions = value;
     }
 
-    get name(): String {
-        return this._name;
+    get nameConfig(): String {
+        return this._nameConfig;
     }
 
-    set name(value: String) {
-        this._name = value;
+    set nameConfig(value: String) {
+        this._nameConfig = value;
+    }
+
+
+    get isSeed(): boolean {
+        return this._isSeed;
+    }
+
+    set isSeed(value: boolean) {
+        this._isSeed = value;
+    }
+
+
+    get initialState(): number {
+        return this._initialState;
+    }
+
+    set initialState(value: number) {
+        this._initialState = value;
+    }
+
+    public getQuantityFollowersByNetwork(networkSize: number) {
+        return Number.parseInt(""+(this.percentageFollowers * networkSize/100));//Todo maybe this can be better.
+    }
+
+    public getQuantityFollowingsByNetwork(networkSize: number){
+        return Number.parseInt(""+(this.percentageFollowings * networkSize/100));//Todo maybe this can be better.
     }
 }

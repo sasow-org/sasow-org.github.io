@@ -11,12 +11,12 @@ export class ExperimentConfig {
 
     constructor(simulationConfig: SimulationConfig) {
         this._simulationConfig = simulationConfig;
-        this._name = ""
-        this._description = ""
-        this._repetitions = -1;
-        this._essentialData = false;
-        this._configuratorData = false;
-        this._detailedData = false;
+        //this._name = ""
+        //this._description = ""
+        //this._repetitions = -1;
+        //this._essentialData = false;
+        //this._configuratorData = false;
+        //this._detailedData = false;
     }
 
     get name(): string {
