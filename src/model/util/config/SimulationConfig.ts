@@ -12,7 +12,7 @@ export class SimulationConfig {
     }
 
 
-    get SeedSize(): number {
+    get seedSize(): number {
         let total: number = 0;
         for(let i: number = 0; i<this._agentsConfigs.length; i++) {
             if(this._agentsConfigs[i].agentInfo.isSeed){

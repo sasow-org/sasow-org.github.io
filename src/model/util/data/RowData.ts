@@ -4,9 +4,9 @@ export class RowData {
     private _rows: string[];
 
 
-    constructor(head: string[], rows: string[]) {
-        this._head = head;
-        this._rows = rows;
+    constructor() {
+        this._head = [];
+        this._rows = [];
     }
 
     public addRow(new_row : any, name: string) : void {

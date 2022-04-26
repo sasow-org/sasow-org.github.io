@@ -1,5 +1,6 @@
 import {Simulation} from "./Simulation";
 import {DataHandler} from "../datahandler/DataHandler";
+import {ExperimentConfig} from "../util/config/ExperimentConfig";
 
 export abstract class Experiment {
     protected simulation: Simulation;
