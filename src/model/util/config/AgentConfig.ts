@@ -1,4 +1,3 @@
-import {Agent} from "../../essential/Agent";
 import {Action} from "../actions/Action";
 
 export class AgentConfig {

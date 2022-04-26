@@ -29,7 +29,7 @@ export class RowData {
         let sb : string = "";
         for(let i : number = 0 ; i<arrayToString.length; i++) {
             sb += arrayToString[i];
-            if (i+1 != arrayToString.length){
+            if (i+1 !== arrayToString.length){
                 sb += ","
             }
         }

@@ -30,14 +30,17 @@ export abstract class Experiment implements IObservable, IDataEssential {
 
     public run() : void {
         console.log("Starting to running in Experiment")
-
-        while(this._repetitionNumber< this._maxRepetitions){
+        console.log("this._repetitionNumber< this._maxRepetitions: ", this._repetitionNumber< this._maxRepetitions)
+        console.log("this._repetitionNumber: ", this._repetitionNumber)
+        console.log("this._maxRepetitions: ", this._maxRepetitions)
+        while(this._repetitionNumber < this._maxRepetitions){
             console.log("Starting run (" + this._repetitionNumber + " ) of " + (this._maxRepetitions))
             this.initialize(this._repetitionNumber)
             this._simulation.run()
             this.repetitionNumber = ++this._repetitionNumber;
             console.log("Ending run (" + this._repetitionNumber + " ) of " + (this._maxRepetitions))
         }
+        console.log("Ending Experiment ")
     }
 
     public abstract initialize(id: number) : void ;

@@ -1,26 +1,30 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {DataHandlerConfig} from "./model/util/config/DataHandlerConfig";
+import {ExperimentTwitter} from "./model/environments/twitter/ExperimentTwitter";
+import {Button} from "@mui/material";
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 
 function App() {
+  const repetitions : number = 3;
+  const name: string = "test experiment twitter"
+  const description: string = "test description"
+  const dataHandlerConfig: DataHandlerConfig = new DataHandlerConfig(name, true, true);
+
+  const startExperiment = () => {
+    let experimentTwitter : ExperimentTwitter = new ExperimentTwitter(repetitions, name, description, dataHandlerConfig);
+    experimentTwitter.run();
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="App">
+        <header className="App-header">
+          <Button onClick={startExperiment} variant="contained"><PlayCircleFilledWhiteIcon/></Button>
+          <h1>Hola soy el D1ekeu</h1>
+        </header>
+      </div>
+  )
 }
 
 export default App;
