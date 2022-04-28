@@ -7,7 +7,7 @@ import {Button} from "@mui/material";
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
 
 function App() {
-  const repetitions : number = 3;
+  const repetitions : number = 1;
   const name: string = "test experiment twitter"
   const description: string = "test description"
   const dataHandlerConfig: DataHandlerConfig = new DataHandlerConfig(name, true, true);

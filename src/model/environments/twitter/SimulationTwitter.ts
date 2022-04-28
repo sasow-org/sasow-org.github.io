@@ -6,7 +6,10 @@ export class SimulationTwitter extends Simulation {
 
     constructor(id: number, simulationConfig: SimulationConfig) {
         super(id, simulationConfig);
+        console.log("Creando simulation twitter")
+        console.log("ID: ", id, " tiene y debe tener sus propios simulation config xD")
         this._environment = new EnvironmentTwitter(id, simulationConfig.periods, simulationConfig.networkSize, simulationConfig.seedSize, simulationConfig.agentsConfigs);
+
     }
 
     run(): void {

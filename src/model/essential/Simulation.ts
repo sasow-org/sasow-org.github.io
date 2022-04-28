@@ -1,4 +1,3 @@
-import {Experiment} from "./Experiment";
 import {SimulationConfig} from "../util/config/SimulationConfig";
 import {IDataEssential} from "../util/data/interfaces/IDataEssential";
 import {IDataDetailed} from "../util/data/interfaces/IDataDetailed";

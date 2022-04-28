@@ -19,6 +19,10 @@ export class TwitterAgent extends Agent {
 
     private share() : void {
         if(this.state === Agent.PREPARE_FOR_SHARE){
+            if(!this._isSeed){
+                console.log("Tengo prepare for share y soy normal, mi id es: ", this._agent_id)
+            }
+            console.log("ON Agent ID: ",this._agent_id, " with Prepare for share, y mi estado es: ", this._state)
             this.followers.map((agent: Agent) : void => {
                 agent.receiveMessage();
             })

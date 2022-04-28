@@ -1,8 +1,5 @@
 import {Environment} from "../../essential/Environment";
 import {RowData} from "../../util/data/RowData";
-import {IObservable} from "../../util/datahandler/observer/IObservable";
-import {IDataEssential} from "../../util/data/interfaces/IDataEssential";
-import {IDataDetailed} from "../../util/data/interfaces/IDataDetailed";
 import {Agent} from "../../essential/Agent";
 import {AgentConfig} from "../../util/config/AgentConfig";
 
@@ -16,6 +13,8 @@ export class EnvironmentTwitter extends Environment {
         agentsConfigs: AgentConfig[]
     ) {
         super(id, periods, networkSize, seedSize, agentsConfigs);
+        console.log("Creando un environment Twitter con datos: ")
+        console.log("id: ", id, " periods: ",periods, " networkSize: ", networkSize, " seedSize: ", seedSize)
     }
 
 
@@ -52,7 +51,11 @@ export class EnvironmentTwitter extends Environment {
     step(): void {
         console.log("Do Step ("+(this._period+1)+") of "+this._periods)
         if(this.period === 0 ){//Primer periodo.
-
+            this.seeds.map((seed: Agent) => {
+                console.log("Soy una seed, con id: ",seed.agent_id," y mi estado es: ", seed.state)
+                seed.doActions();
+                console.log("Sigo siendo seed id: ", seed.agent_id, " Y mi estado ahora es ",seed.state)
+            })
         }else {
             this.users.map((agent: Agent) => {
                 agent.doActions();

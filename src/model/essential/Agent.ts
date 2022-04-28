@@ -74,13 +74,11 @@ export abstract class Agent implements IDataDetailed, IObservable, Product{
 
     public receiveMessage() : void {
         if(this.state === Agent.NOREAD) {
-            const action : Action | undefined = this._actions.find(action => action.name === "read")
-            if(this._state === Agent.READ && action){
-                action.Execute(this);
-                const action2 : Action | undefined = this._actions.find(action => action.name === "share");
-                if(action2){
-                    action2.Execute(this);
-                }
+            let action : Action = this._actions.find(action => action.name === "read")
+            action.Execute(this);
+            if(this._state === Agent.READ){
+                const action2 : Action = this._actions.find(action => action.name === "share");
+                action2.Execute(this);
             }
         }
     }
