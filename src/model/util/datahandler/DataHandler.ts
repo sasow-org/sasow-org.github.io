@@ -24,6 +24,10 @@ export class DataHandler implements IObserver {
 
     private _dataHandlerConfig : DataHandlerConfig;
 
+    constructor() {
+        this._essentialData = new MatrixData();
+        this._detailedData = new MatrixData();
+    }
 
     /*
         public static restartInstance() : void {
@@ -43,12 +47,13 @@ export class DataHandler implements IObserver {
     public addLineDetailed() : void{
         let rdSimulation : RowData  = this._simulation.DataEssential();
         let rdEnvironment : RowData  = this._environment.DataEssential();
+        let essentialRef = this._detailedData;
         this._environment.users.map((user: Agent) => {
             let rd : RowData = new RowData();
             rd.addRows(rdSimulation)
             rd.addRows(rdEnvironment)
             rd.addRows(user.DataDetailed())
-            this._detailedData.addRow(rd);
+            essentialRef.addRow(rd);
         })
     }
 
