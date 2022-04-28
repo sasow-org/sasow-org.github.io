@@ -1,7 +1,6 @@
 import {Creator} from "./Creator";
 import {Product} from "./Product";
 import {TwitterAgent} from "../../environments/twitter/TwitterAgent";
-import {Action} from "../actions/Action";
 import {AgentConfig} from "../config/AgentConfig";
 
 export class AgentTwitterFactory extends Creator{
@@ -17,7 +16,7 @@ export class AgentTwitterFactory extends Creator{
 
     create(id: number): TwitterAgent{
         return <TwitterAgent>this.createProduct(() => {
-            new TwitterAgent(id, this._agentConfig)//todo learn more about this.
+            return new TwitterAgent(id, this._agentConfig)//todo learn more about this.
         });
     }
 
