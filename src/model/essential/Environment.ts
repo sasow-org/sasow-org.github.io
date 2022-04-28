@@ -1,4 +1,3 @@
-import {Simulation} from "./Simulation";
 import {Agent} from "./Agent";
 import {IObservable} from "../util/datahandler/observer/IObservable";
 import {IDataEssential} from "../util/data/interfaces/IDataEssential";
@@ -15,7 +14,6 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
     protected _seedSize: number
     protected _periods: number
     protected _period: number
-    protected _simulation: Simulation//todo maybe simulation is unnecessary
 
     protected _initialized: boolean
     protected _users: Agent[]
@@ -76,7 +74,10 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
 
         if(!this.isDone()){
             console.log("Error in initialize environment with id: ", this._id);
-            close()
+            console.log("ERROR ERROR ERROR ERROR ERROR ERROR")
+            console.log("ERROR ERROR ERROR ERROR ERROR ERROR")
+            console.log("ERROR ERROR ERROR ERROR ERROR ERROR")
+            console.log("ERROR ERROR ERROR ERROR ERROR ERROR")
         }
 
         this._initialized = true;
@@ -91,7 +92,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
             console.log("Total in followers: "+total);
             console.log("FollowersSize: "+user.followers.length+ "i --> "+i)
             i++;
-            while (user.followers.length != total){
+            while (user.followers.length !== total){
                 let max: number = this.users.length;
                 const randomIndex : number = Number.parseInt(""+Math.random() * ((max - 1) + 1)+0)
                 user.addFriend(this.users[randomIndex])//todo maybe the addFriend function can call addFollower.,,
@@ -109,7 +110,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
             console.log("Total in Followings: "+total);
             console.log("FollowingsSize: "+user.followings.length+ "i --> "+i)
             i++;
-            while (user.followings.length != total){
+            while (user.followings.length !== total){
                 let max: number = this.users.length;
                 const randomIndex : number = Number.parseInt(""+Math.random() * ((max - 1) + 1)+0)
                 user.addFollowing(this.users[randomIndex])//todo maybe the addFriend function can call addFollower.,,
@@ -119,7 +120,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
     }
 
     public createAgents(agentConfig: AgentConfig) : void {
-        agentConfig
+        //agentConfig
         //Por la cantidad de agentes que hay en ese agent,
         console.log("Starting create agents with AgentConfig: "+agentConfig.nameConfig);
         for(let i : number = 0; i <agentConfig.quantityAgent; i++) {
@@ -197,14 +198,6 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
     set period(value: number) {
         this._period = value;
         this.notifyData();
-    }
-
-    get simulation(): Simulation {
-        return this._simulation;
-    }
-
-    set simulation(value: Simulation) {
-        this._simulation = value;
     }
 
     get initialized(): boolean {

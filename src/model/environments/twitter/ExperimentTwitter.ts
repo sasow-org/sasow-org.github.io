@@ -26,9 +26,9 @@ export class ExperimentTwitter extends Experiment{
         commands.push(actionShare)
         commands.push(lRead)
 
-        let avSeedConfig : AgentConfig = new AgentConfig(Agent.PREPARE_FOR_SHARE, commands, true, seedSize,  1, 0)
+        let avSeedConfig : AgentConfig = new AgentConfig(1, commands, true, seedSize,  1, 0)
 
-        let avrConfig : AgentConfig = new AgentConfig(Agent.NOREAD, commands, false, networkSize - seedSize,  0.1, 0)
+        let avrConfig : AgentConfig = new AgentConfig(0, commands, false, networkSize - seedSize,  0.1, 0)
 
         let agentsConfigs : AgentConfig[] = [];
 

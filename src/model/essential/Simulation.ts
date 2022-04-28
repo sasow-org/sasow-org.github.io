@@ -26,7 +26,6 @@ export abstract class Simulation implements IDataEssential, IDataDetailed{
     public abstract run() : void;
 
     public initialize() {
-        this._environment.simulation = this;
         this._environment.initialize();
     }
 

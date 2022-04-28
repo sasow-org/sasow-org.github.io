@@ -4,8 +4,20 @@ import {IObservable} from "../../util/datahandler/observer/IObservable";
 import {IDataEssential} from "../../util/data/interfaces/IDataEssential";
 import {IDataDetailed} from "../../util/data/interfaces/IDataDetailed";
 import {Agent} from "../../essential/Agent";
+import {AgentConfig} from "../../util/config/AgentConfig";
 
 export class EnvironmentTwitter extends Environment {
+
+    constructor(
+        id: number,
+        periods: number,
+        networkSize: number,
+        seedSize: number,
+        agentsConfigs: AgentConfig[]
+    ) {
+        super(id, periods, networkSize, seedSize, agentsConfigs);
+    }
+
 
     getCountStates(): RowData {
         let rd: RowData = new RowData();
