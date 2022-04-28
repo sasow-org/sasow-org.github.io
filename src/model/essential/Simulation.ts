@@ -6,9 +6,7 @@ import {Environment} from "./Environment";
 import {RowData} from "../util/data/RowData";
 
 export abstract class Simulation implements IDataEssential, IDataDetailed{
-    protected _experiment: Experiment | undefined;
-    protected _simulation: Simulation | undefined;
-    protected _environment: Environment | undefined;
+    protected _environment: Environment;
     protected _simulationConfig: SimulationConfig;
     protected _id: number;
     protected _networkSize: number;
@@ -42,23 +40,6 @@ export abstract class Simulation implements IDataEssential, IDataDetailed{
         rdSimulation.addRow(this._seedSize, "seed_size");
         rdSimulation.addRow(this._periods, "periods");
         return rdSimulation;
-    }
-
-
-    get experiment(): Experiment | undefined {
-        return this._experiment;
-    }
-
-    set experiment(value: Experiment | undefined) {
-        this._experiment = value;
-    }
-
-    get simulation(): Simulation | undefined {
-        return this._simulation;
-    }
-
-    set simulation(value: Simulation | undefined) {
-        this._simulation = value;
     }
 
     get environment(): Environment | undefined {

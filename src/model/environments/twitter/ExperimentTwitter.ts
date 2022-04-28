@@ -16,8 +16,8 @@ export class ExperimentTwitter extends Experiment{
     }
 
     configure(): void {
-        const networkSize : number = 10000;
-        const seedSize: number = 100;
+        const networkSize : number = 500;
+        const seedSize: number = 5;
         const periods : number = 25;
 
         let commands : Action[] = [];
@@ -42,7 +42,7 @@ export class ExperimentTwitter extends Experiment{
 
     initialize(id: number): void {
         this.simulation = new SimulationTwitter(id, this.simulationConfig);
-        this.simulation.experiment = this;
+        this.repetitionNumber = 0;
         this.simulation.initialize();
         DataHandler.getInstance().experiment = this;
         DataHandler.getInstance().simulation = this.simulation;

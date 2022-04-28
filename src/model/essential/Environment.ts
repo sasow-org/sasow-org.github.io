@@ -48,13 +48,15 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
     public abstract getCountStates(): RowData;
 
     DataEssential(): RowData {
-        throw new Error("Method not implemented.");
+        let rdEnvironment : RowData = new RowData();
+        rdEnvironment.addRow(this._period, "simulation_period");
+        rdEnvironment.addRows(this.getCountStates());
+        return rdEnvironment;
     }
 
     DataDetailed(): RowData {
         let rdEnvironment : RowData = new RowData();
         rdEnvironment.addRow(this._period, "simulation_period");
-        rdEnvironment.addRows(this.getCountStates());
         return rdEnvironment;
     }
 
@@ -89,8 +91,8 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
         this.users.map((user: Agent ) => {
             let agentConfig: AgentConfig = user.agentConfig;
             const total : number = agentConfig.getQuantityFollowersByNetwork(this._networkSize)
-            console.log("Total in followers: "+total);
-            console.log("FollowersSize: "+user.followers.length+ "i --> "+i)
+            //console.log("Total in followers: "+total);
+            //console.log("FollowersSize: "+user.followers.length+ "i --> "+i)
             i++;
             while (user.followers.length !== total){
                 let max: number = this.users.length;
@@ -107,8 +109,8 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
         this.users.map((user: Agent ) => {
             let agentConfig: AgentConfig = user.agentConfig;
             const total : number = agentConfig.getQuantityFollowingsByNetwork(this._networkSize)
-            console.log("Total in Followings: "+total);
-            console.log("FollowingsSize: "+user.followings.length+ "i --> "+i)
+            //console.log("Total in Followings: "+total);
+            //console.log("FollowingsSize: "+user.followings.length+ "i --> "+i)
             i++;
             while (user.followings.length !== total){
                 let max: number = this.users.length;
@@ -127,6 +129,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
             let atf : AgentTwitterFactory = new AgentTwitterFactory(agentConfig);//TODO make generic to insert Facebook or Twitter agent.
             let auxAgent: Agent = atf.create(i);
             this.users.push(auxAgent)
+
             if (auxAgent.isSeed){
                 this.seeds.push(auxAgent);
             }
@@ -154,6 +157,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
             }
         })
 
+        console.log("ALL DONE PAPITOO ")
         return true;
     }
 
