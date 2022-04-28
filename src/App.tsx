@@ -12,9 +12,9 @@ function App() {
   const description: string = "test description"
   const dataHandlerConfig: DataHandlerConfig = new DataHandlerConfig(name, true, true);
 
-  const startExperiment = () => {
+  const startExperiment = async () =>  {
     let experimentTwitter : ExperimentTwitter = new ExperimentTwitter(repetitions, name, description, dataHandlerConfig);
-    experimentTwitter.run();
+    await   experimentTwitter.run();
   }
 
   return (
