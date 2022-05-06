@@ -54,7 +54,7 @@ export class EnvironmentTwitter extends Environment {
             this.seeds.map((seed: Agent) => {
                 console.log("Soy una seed, con id: ",seed.agent_id," y mi estado es: ", seed.state)
                 seed.doActions();
-                console.log("Sigo siendo seed id: ", seed.agent_id, " Y mi estado ahora es ",seed.state)
+                console.log("Despues de seed.doActions, Sigo siendo seed id: ", seed.agent_id, " Y mi estado ahora es ",seed.state)
             })
         }else {
             this.users.map((agent: Agent) => {

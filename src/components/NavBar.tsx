@@ -22,7 +22,8 @@ const darkTheme = createTheme({
 });
 
 
-export default function NavBar() {
+export default function NavBar(props) {
+
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -88,7 +89,7 @@ export default function NavBar() {
                 >
                     {label}
                 </Typography>
-                <StartButton/>
+                <StartButton experimentConfig={props.experimentConfig}/>
             </Toolbar>
         );
     }

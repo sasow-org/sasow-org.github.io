@@ -11,18 +11,81 @@ import StartButton from "./components/StartButton";
 import NavBar from "./components/NavBar";
 import TemplateLayout from "./components/TemplateLayout";
 
+
+
 function App() {
 
 
+//agenttype deberia hacer referencia a la clase del objeto que debemos instanciar
+    const agentConfig1 = {
+        initialState: 0,
+        configName: "agent234123123",
+        percentageFollowers: 1,
+        percentageFollowings: 0,
+        agentType: "twitterAgent",
+        actions: [
+            {
+                name: "read",
+                probability: 0.5,
+                type: "ActionRead" //aqui se hace referencia a la clase del objeto action que se debera instanciar
+            },
+            {
+                name: "share",
+                probability: 0.03,
+                type: "ActionShare" //aqui se hace referencia a la clase del objeto action que se debera instanciar}
+            },
+        ]
+        ,
+        isSeed: false,
+        quantityAgent: 950
+    }
+
+    const agentConfig2 = {
+        initialState: 2,
+        configName: "agent2234234",
+        percentageFollowers: 1,
+        percentageFollowings: 0,
+        agentType: "twitterAgent",
+        actions: [
+            {
+                name: "read",
+                probability: 0.5,
+                type: "ActionRead" //aqui se hace referencia a la clase del objeto action que se debera instanciar
+            },
+            {
+                name: "share",
+                probability: 0.03,
+                type: "ActionShare" //aqui se hace referencia a la clase del objeto action que se debera instanciar}
+            },
+        ],
+        isSeed: true,
+        quantityAgent: 50
+    }
+
+    const experimentConfig = {
+        experimentName: "123",
+        repetitions: 1,
+        networkSize: 1000,
+        seedSize: 50,
+        periods: 20,
+        description: "true",
+        agentsConfigs: [
+            agentConfig1,agentConfig2
+        ],
+        essentialData: true,
+        detailedData: true,
+        experimentType: "TwitterExperiment"//referencia a la clase que se deberia instanciar
+    };
 
 
-  return (
+
+    return (
       <div className="App">
           <BrowserRouter>
-              <NavBar/>
+              <NavBar experimentConfig={experimentConfig} />
               <Box mt={2} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
               }}>
-                  <TemplateLayout/>
+                  <TemplateLayout experimentConfig={experimentConfig}/>
               </Box>
           </BrowserRouter>
       </div>

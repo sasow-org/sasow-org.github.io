@@ -9,13 +9,13 @@ export class AgentConfig {
     private _nameConfig: String;
     private _initialState: number;
 
-    constructor(initialState: number,agentActions: Action[], isSeed: boolean,quantityAgent: number, percentageFollowers: number, percentageFollowings: number ) {
+    constructor(configName: string, initialState: number,agentActions: Action[], isSeed: boolean,quantityAgent: number, percentageFollowers: number, percentageFollowings: number ) {
         //this._agentInfo = agentInfo
         this._quantityAgent=quantityAgent
         this._percentageFollowers = percentageFollowers
         this._percentageFollowings = percentageFollowings
         this._actions = agentActions;
-        this._nameConfig = "agentDefault";
+        this._nameConfig = configName;
         this._isSeed = isSeed;
         this._initialState = initialState;
         //        System.out.println("Followers in agentConfig: "+followers+" --> "+name);
