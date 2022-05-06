@@ -22,19 +22,17 @@ export default function TemplateLayout(props){
                 <Grid item xs={12}>
                     <ExperimentsOptionsCard />
                 </Grid>
-                <Grid container item xs={12}>
-                    <Grid item xs={6}>
-                        <ExperimentInputCard experimentConfig={experimentConfig}/>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <ConfigurationCard/>
-                    </Grid>
+                <Grid item xs={6}>
+                    <ExperimentInputCard experimentConfig={experimentConfig}/>
+                </Grid>
+                <Grid item xs={6}>
+                    <ConfigurationCard experimentConfig={experimentConfig}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <DataHandlerOptionsCard/>
+                    <DataHandlerOptionsCard experimentConfig={experimentConfig}/>
                 </Grid>
                 <Grid item xs={12}>
-                    <OutputIterationsCard/>
+                    <OutputIterationsCard />
                 </Grid>
             </Grid>
         </Box>

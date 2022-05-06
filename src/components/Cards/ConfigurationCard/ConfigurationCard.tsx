@@ -11,7 +11,7 @@ import {
     TableRow
 } from "@mui/material";
 
-export default function ConfigurationCard() {
+export default function ConfigurationCard(props) {
     function createData(
         name: string,
         calories: number,
@@ -81,9 +81,5 @@ export default function ConfigurationCard() {
                 </Button>
             </Grid>
         </Grid>
-
-
-
-
     </Card>
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Button, Card, Grid} from "@mui/material";
 
-export default function ExperimentsOptionsCard() : JSX.Element {
+export default function ExperimentsOptionsCard() {
 
     return (
         <Card>

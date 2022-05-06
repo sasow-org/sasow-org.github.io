@@ -57,22 +57,13 @@ export default function ExperimentInputCard(props) {
     return <Card>
         <Box
             component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
+            margin="15px"
             noValidate
             autoComplete="off"
         >
             <Grid container spacing={1}>
                 <Grid item xs={12}>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-                    >
-                        ExperimentInputConfigurator
-                    </Typography>
+                    <h1>ExperimentInputConfigurator</h1>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
