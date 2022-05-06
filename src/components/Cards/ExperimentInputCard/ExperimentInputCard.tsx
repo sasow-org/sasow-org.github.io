@@ -54,13 +54,9 @@ export default function ExperimentInputCard(props) {
 
 
 
-    return <Card>
-        <Box
-            component="form"
-            margin="15px"
-            noValidate
-            autoComplete="off"
-        >
+    return <Card sx={{
+        padding:"15px"
+    }}>
             <Grid container spacing={1}>
                 <Grid item xs={12}>
                     <h1>ExperimentInputConfigurator</h1>
@@ -126,7 +122,5 @@ export default function ExperimentInputCard(props) {
                     />
                 </Grid>
             </Grid>
-
-        </Box>
     </Card>
 }
