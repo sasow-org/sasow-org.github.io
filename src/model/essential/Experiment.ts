@@ -20,14 +20,15 @@ export abstract class Experiment implements IObservable, IDataEssential {
         maxRepetitions: number,
         name: string,
         description: string,
-        dataHandlerConfig: DataHandlerConfig
+        dataHandlerConfig: DataHandlerConfig,
+        doConfig: Function
     ) {
         this._repetitionNumber = 0;
         this._maxRepetitions = maxRepetitions;
         this._name = name;
         this._description = description;
         DataHandler.getInstance().dataHandlerConfig = dataHandlerConfig;
-        this.configure();
+        this._simulationConfig = this.configure(doConfig);
         this.configureExperimentConfig();
         DataHandler.getInstance().experimentConfig = this._experimentConfig;
     }
@@ -49,7 +50,9 @@ export abstract class Experiment implements IObservable, IDataEssential {
 
     public abstract initialize(id: number) : void ;
 
-    public abstract configure() : void;
+    public configure(doConfig: Function) : SimulationConfig {
+        return doConfig();
+    }
 
     private configureExperimentConfig() {
         this._experimentConfig = new ExperimentConfig(this._simulationConfig)
