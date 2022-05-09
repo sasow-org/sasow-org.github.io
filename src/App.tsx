@@ -7,7 +7,7 @@ import {Box, Button, ListItemButton} from "@mui/material";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 import List from '@mui/material/List';
 import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
-import StartButton from "./components/StartButton";
+import StartButton from "./components/Buttons/StartButton";
 import NavBar from "./components/NavBar";
 import TemplateLayout from "./components/TemplateLayout";
 
@@ -22,7 +22,7 @@ function App() {
         configName: "agent234123123",
         percentageFollowers: 1,
         percentageFollowings: 0,
-        agentType: "twitterAgent",
+        agentType: "TwitterAgent",
         actions: [
             {
                 name: "read",
@@ -45,7 +45,7 @@ function App() {
         configName: "agent2234234",
         percentageFollowers: 1,
         percentageFollowings: 0,
-        agentType: "twitterAgent",
+        agentType: "TwitterAgent",
         actions: [
             {
                 name: "read",

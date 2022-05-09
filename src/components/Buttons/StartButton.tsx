@@ -1,15 +1,15 @@
-import {DataHandlerConfig} from "../model/util/config/DataHandlerConfig";
-import {ExperimentTwitter} from "../model/environments/twitter/ExperimentTwitter";
+import {DataHandlerConfig} from "../../model/util/config/DataHandlerConfig";
+import {ExperimentTwitter} from "../../model/environments/twitter/ExperimentTwitter";
 import {Button} from "@mui/material";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 import React, {useState} from "react";
-import {Action} from "../model/util/actions/Action";
-import {ActionShare} from "../model/util/actions/commands/ActionShare";
-import {ActionRead} from "../model/util/actions/commands/ActionRead";
-import {AgentConfig} from "../model/util/config/AgentConfig";
-import {Agent} from "../model/essential/Agent";
-import {SimulationConfig} from "../model/util/config/SimulationConfig";
-import {TwitterAgent} from "../model/environments/twitter/TwitterAgent";
+import {Action} from "../../model/util/actions/Action";
+import {ActionShare} from "../../model/util/actions/commands/ActionShare";
+import {ActionRead} from "../../model/util/actions/commands/ActionRead";
+import {AgentConfig} from "../../model/util/config/AgentConfig";
+import {Agent} from "../../model/essential/Agent";
+import {SimulationConfig} from "../../model/util/config/SimulationConfig";
+import {TwitterAgent} from "../../model/environments/twitter/TwitterAgent";
 
 export default function StartButton(props) {
 
@@ -58,7 +58,7 @@ export default function StartButton(props) {
                         }
                     })
 
-                    if(agentConfig.agentType === "twitterAgent"){
+                    if(agentConfig.agentType === "TwitterAgent"){
                         let auxConfig : AgentConfig = new AgentConfig(
                             agentConfig.configName,
                             agentConfig.initialState,
