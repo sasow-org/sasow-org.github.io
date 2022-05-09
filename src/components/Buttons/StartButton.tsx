@@ -54,7 +54,7 @@ export default function StartButton(props) {
                         }
 
                         if(action.type === "ActionShare"){
-                            commands.push(new ActionRead(action.name, action.probability))
+                            commands.push(new ActionShare(action.name, action.probability))
                         }
                     })
 
