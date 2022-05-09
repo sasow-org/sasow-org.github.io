@@ -57,70 +57,70 @@ export default function ExperimentInputCard(props) {
     return <Card sx={{
         padding:"15px"
     }}>
-            <Grid container spacing={1}>
-                <Grid item xs={12}>
-                    <h1>ExperimentInputConfigurator</h1>
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        required
-                        label="Experiment Name"
-                        defaultValue=""
-                        value={experimentName}
-                        onChange={handleExperimentNameChange}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        required
-                        label="Repetitions"
-                        value={repetitions}
-                        onChange={handleRepetitionsChange}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        required
-                        label="Network Size"
-                        defaultValue=""
-                        value={networkSize}
-                        onChange={handleNetworkSizeChange}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        required
-                        label="Seed Size"
-                        defaultValue=""
-                        value={seedSize}
-                        onChange={handleSeedSizeChange}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        required
-                        label="Periods"
-                        defaultValue=""
-                        value={periods}
-                        onChange={handlePeriodsChange}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        fullWidth
-                        id=""
-                        label="Description"
-                        multiline
-                        maxRows={4}
-                        value={description}
-                        onChange={handleDescriptionChange}
-                    />
-                </Grid>
+        <Grid container spacing={1}>
+            <Grid item xs={12}>
+                <h1>ExperimentInputConfigurator</h1>
             </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    required
+                    label="Experiment Name"
+                    defaultValue=""
+                    value={experimentName}
+                    onChange={handleExperimentNameChange}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    required
+                    label="Repetitions"
+                    value={repetitions}
+                    onChange={handleRepetitionsChange}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    required
+                    label="Network Size"
+                    defaultValue=""
+                    value={networkSize}
+                    onChange={handleNetworkSizeChange}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    required
+                    label="Seed Size"
+                    defaultValue=""
+                    value={seedSize}
+                    onChange={handleSeedSizeChange}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    required
+                    label="Periods"
+                    defaultValue=""
+                    value={periods}
+                    onChange={handlePeriodsChange}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    fullWidth
+                    id=""
+                    label="Description"
+                    multiline
+                    maxRows={4}
+                    value={description}
+                    onChange={handleDescriptionChange}
+                />
+            </Grid>
+        </Grid>
     </Card>
 }

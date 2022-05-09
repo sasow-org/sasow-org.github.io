@@ -18,7 +18,7 @@ export default function ConfigurationCard(props) {
             <Grid item xs={8}>
                 <h1>Configuration Card</h1>
             </Grid>
-            <Grid item xs={4}>
+            <Grid alignContent="center" item xs={4}>
                 <ModalNewAgentConfig experimentConfig={props.experimentConfig}/>
             </Grid>
             <Grid item xs={12}>
