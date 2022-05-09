@@ -28,11 +28,7 @@ export default function ModalEditAgentConfig(props) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [selectedAgentType, setSelectedAgentType] = useState(agentConfig.agentType)
-
-    const handleChangeSelectAgentType = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedAgentType(event.target.value)
-    }
+    console.log(agentConfig.agentType)
 
     const [selectedAction, setSelectedAction] = useState("")
 
@@ -40,6 +36,30 @@ export default function ModalEditAgentConfig(props) {
         setSelectedAction(event.target.value);
     }
 
+
+    // Config Name
+    const [configName, setConfigName] = useState(agentConfig.configName)
+    const handleChangeConfigName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setConfigName(event.target.value);
+    }
+
+    // Followers Percentage
+    const [followersPercentage, setFollowersPercentage] = useState(agentConfig.percentageFollowers);
+    const handleChangeFollowersPercentage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFollowersPercentage(parseFloat(event.target.value))
+    }
+
+    // Followings Percentage
+    const [followingsPercentage, setFollowingsPercentage] = useState(agentConfig.percentageFollowers);
+    const handleChangeFollowingsPercentage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFollowingsPercentage(parseFloat(event.target.value))
+    }
+
+    // Agent Type, remember this is for select the class was need to instantiate.
+    const [selectedAgentType, setSelectedAgentType] = useState(agentConfig.agentType)
+    const handleChangeSelectAgentType = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedAgentType(event.target.value)
+    }
 
 
 
@@ -121,6 +141,9 @@ export default function ModalEditAgentConfig(props) {
                         </Grid>
                         <Grid item xs={12}>
                             <ActionConfigsTable actions={agentConfig.actions} />
+                        </Grid>
+                        <Grid item xs={12}>
+
                         </Grid>
                     </Grid>
                 </Box>
