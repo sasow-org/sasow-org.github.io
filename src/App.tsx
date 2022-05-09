@@ -19,7 +19,7 @@ function App() {
 //agenttype deberia hacer referencia a la clase del objeto que debemos instanciar
     const agentConfig1 = {
         initialState: 0,
-        configName: "agent234123123",
+        configName: "agent config 1",
         percentageFollowers: 1,
         percentageFollowings: 0,
         agentType: "TwitterAgent",
@@ -42,7 +42,7 @@ function App() {
 
     const agentConfig2 = {
         initialState: 2,
-        configName: "agent2234234",
+        configName: "agent config 2",
         percentageFollowers: 1,
         percentageFollowings: 0,
         agentType: "TwitterAgent",
@@ -68,7 +68,7 @@ function App() {
         networkSize: 1000,
         seedSize: 50,
         periods: 20,
-        description: "true",
+        description: "asdas",
         agentsConfigs: [
             agentConfig1,agentConfig2
         ],
