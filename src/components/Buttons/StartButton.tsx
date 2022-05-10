@@ -7,7 +7,6 @@ import {Action} from "../../model/util/actions/Action";
 import {ActionShare} from "../../model/util/actions/commands/ActionShare";
 import {ActionRead} from "../../model/util/actions/commands/ActionRead";
 import {AgentConfig} from "../../model/util/config/AgentConfig";
-import {Agent} from "../../model/essential/Agent";
 import {SimulationConfig} from "../../model/util/config/SimulationConfig";
 import {TwitterAgent} from "../../model/environments/twitter/TwitterAgent";
 
@@ -56,6 +55,8 @@ export default function StartButton(props) {
                         if(action.type === "ActionShare"){
                             commands.push(new ActionShare(action.name, action.probability))
                         }
+
+                        return
                     })
 
                     if(agentConfig.agentType === "TwitterAgent"){
@@ -73,6 +74,8 @@ export default function StartButton(props) {
 
                     console.log(commands)
                     console.log(agentsConfigs)
+
+                    return
                 })
 
                 //agentsConfigs.push(avSeedConfig)

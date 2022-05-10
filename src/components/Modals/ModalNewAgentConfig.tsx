@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState} from "react";
-import {Box, Button, Grid, MenuItem, Modal, TextField, Typography} from "@mui/material";
+import {Box, Button, Grid, MenuItem, Modal, TextField} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from "@mui/icons-material/Edit";
 import ActionConfigsTable from "../Table/ActionConfigsTable";
@@ -22,7 +22,7 @@ export default function ModalNewAgentConfig(props) {
     const typesArray = ['TwitterAgent', 'FacebookAgent']
     const actionsArray = ['read', "share"];
 
-    const agentConfig = props.agentConfig;
+    //const agentConfig = props.agentConfig;
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);

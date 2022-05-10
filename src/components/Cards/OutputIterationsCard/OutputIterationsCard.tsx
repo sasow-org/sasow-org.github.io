@@ -2,15 +2,6 @@ import {Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, Tab
 import Typography from "@mui/material/Typography";
 
 export default function OutputIterationsCard() {
-    function createData(
-        name: string,
-        calories: number,
-        fat: number,
-        carbs: number,
-        protein: number,
-    ) {
-        return { name, calories, fat, carbs, protein };
-    }
 
     const rows = [
     ];

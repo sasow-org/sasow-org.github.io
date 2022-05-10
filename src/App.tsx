@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Box, Button, ListItemButton} from "@mui/material";
-import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
+import {Box} from "@mui/material";
+import {BrowserRouter} from 'react-router-dom';
 import NavBar from "./components/NavBar";
 import TemplateLayout from "./components/TemplateLayout";
 

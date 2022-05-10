@@ -1,7 +1,5 @@
-import {Button, Card, FormControlLabel, Grid, Switch} from "@mui/material";
+import { Card, FormControlLabel, Grid, Switch} from "@mui/material";
 import React from "react";
-import Typography from "@mui/material/Typography";
-import AddBoxIcon from '@mui/icons-material/AddBox';
 
 export default function DataHandlerOptionsCard(props) {
 

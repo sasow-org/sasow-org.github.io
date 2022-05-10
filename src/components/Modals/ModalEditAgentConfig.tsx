@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import {Box, Button, Grid, MenuItem, Modal, TextField, Typography} from "@mui/material";
+import {Box, Button, Grid, MenuItem, Modal, TextField} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import AgentConfigsTable from "../Table/AgentConfigsTable";
 import ActionConfigsTable from "../Table/ActionConfigsTable";
 import AddIcon from '@mui/icons-material/Add';
 

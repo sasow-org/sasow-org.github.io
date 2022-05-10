@@ -1,6 +1,5 @@
 import {
     Button,
-    FormControlLabel,
     Paper, Switch,
     Table,
     TableBody,

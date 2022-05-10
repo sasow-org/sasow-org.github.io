@@ -1,10 +1,8 @@
 import {
-    Button,
     Card,
     Grid,
 } from "@mui/material";
 import AgentConfigsTable from "../../Table/AgentConfigsTable";
-import ModalEditAgentConfig from "../../Modals/ModalEditAgentConfig";
 import ModalNewAgentConfig from "../../Modals/ModalNewAgentConfig";
 
 export default function ConfigurationCard(props) {
