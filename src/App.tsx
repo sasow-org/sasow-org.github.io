@@ -1,13 +1,7 @@
 import React from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import {DataHandlerConfig} from "./model/util/config/DataHandlerConfig";
-import {ExperimentTwitter} from "./model/environments/twitter/ExperimentTwitter";
 import {Box, Button, ListItemButton} from "@mui/material";
-import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
-import List from '@mui/material/List';
 import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
-import StartButton from "./components/Buttons/StartButton";
 import NavBar from "./components/NavBar";
 import TemplateLayout from "./components/TemplateLayout";
 
@@ -18,7 +12,7 @@ function App() {
 
 //agenttype deberia hacer referencia a la clase del objeto que debemos instanciar
     const agentConfig1 = {
-        initialState: 1,
+        initialState: 0,
         configName: "agent config 1",
         percentageFollowers: 1,
         percentageFollowings: 0,
