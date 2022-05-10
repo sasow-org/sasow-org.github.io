@@ -18,7 +18,7 @@ function App() {
 
 //agenttype deberia hacer referencia a la clase del objeto que debemos instanciar
     const agentConfig1 = {
-        initialState: 0,
+        initialState: 1,
         configName: "agent config 1",
         percentageFollowers: 1,
         percentageFollowings: 0,
