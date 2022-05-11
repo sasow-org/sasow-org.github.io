@@ -98,7 +98,7 @@ export default function NavBar(props) {
         <Stack spacing={2} sx={{ flexGrow: 1 }}>
             <ThemeProvider theme={darkTheme}>
                 <AppBar position="static" color="primary">
-                    {appBarLabel('CHAITSOW')}
+                    {appBarLabel('SASOW-TS')}
                 </AppBar>
             </ThemeProvider>
         </Stack>
