@@ -1,91 +1,96 @@
-import {SimulationConfig} from "../util/config/SimulationConfig";
-import {IDataEssential} from "../util/data/interfaces/IDataEssential";
-import {IDataDetailed} from "../util/data/interfaces/IDataDetailed";
-import {Environment} from "./Environment";
-import {RowData} from "../util/data/RowData";
+import { SimulationConfig } from '../util/config/SimulationConfig';
+import { IDataEssential } from '../util/data/interfaces/IDataEssential';
+import { IDataDetailed } from '../util/data/interfaces/IDataDetailed';
+import { Environment } from './Environment';
+import { RowData } from '../util/data/RowData';
 
-export abstract class Simulation implements IDataEssential, IDataDetailed{
-    protected _environment: Environment;
-    protected _simulationConfig: SimulationConfig;
-    protected _id: number;
-    protected _networkSize: number;
-    protected _seedSize: number;
-    protected _periods: number;
+export abstract class Simulation implements IDataEssential, IDataDetailed {
+  protected _environment: Environment;
 
-    protected constructor(id: number, simulationConfig: SimulationConfig) {
-        this._id = id;
-        this._networkSize = simulationConfig.networkSize;
-        this._seedSize = simulationConfig.seedSize;
-        this._periods = simulationConfig.periods;
-        this._simulationConfig = simulationConfig;
-    }
+  protected _simulationConfig: SimulationConfig;
 
-    public abstract run() : void;
+  protected _id: number;
 
-    public initialize() {
-        this._environment.initialize();
-    }
+  protected _networkSize: number;
 
-    DataDetailed(): RowData {
-        let rd : RowData = new RowData();
-        rd.addRow(this._id, "simulation_id");
-        return rd;
-    }
+  protected _seedSize: number;
 
-    DataEssential(): RowData {
-        let rdSimulation : RowData = new RowData();
-        rdSimulation.addRow(this._id, "simulation_id")
-        rdSimulation.addRow(this._networkSize, "network_size");
-        rdSimulation.addRow(this._seedSize, "seed_size");
-        rdSimulation.addRow(this._periods, "periods");
-        return rdSimulation;
-    }
+  protected _periods: number;
 
-    get environment(): Environment | undefined {
-        return this._environment;
-    }
+  protected constructor(id: number, simulationConfig: SimulationConfig) {
+    this._id = id;
+    this._networkSize = simulationConfig.networkSize;
+    this._seedSize = simulationConfig.seedSize;
+    this._periods = simulationConfig.periods;
+    this._simulationConfig = simulationConfig;
+  }
 
-    set environment(value: Environment | undefined) {
-        this._environment = value;
-    }
+  public abstract run() : void;
 
-    get simulationConfig(): SimulationConfig {
-        return this._simulationConfig;
-    }
+  public initialize() {
+    this._environment.initialize();
+  }
 
-    set simulationConfig(value: SimulationConfig) {
-        this._simulationConfig = value;
-    }
+  DataDetailed(): RowData {
+    const rd : RowData = new RowData();
+    rd.addRow(this._id, 'simulation_id');
+    return rd;
+  }
 
-    get id(): number {
-        return this._id;
-    }
+  DataEssential(): RowData {
+    const rdSimulation : RowData = new RowData();
+    rdSimulation.addRow(this._id, 'simulation_id');
+    rdSimulation.addRow(this._networkSize, 'network_size');
+    rdSimulation.addRow(this._seedSize, 'seed_size');
+    rdSimulation.addRow(this._periods, 'periods');
+    return rdSimulation;
+  }
 
-    set id(value: number) {
-        this._id = value;
-    }
+  get environment(): Environment | undefined {
+    return this._environment;
+  }
 
-    get networkSize(): number {
-        return this._networkSize;
-    }
+  set environment(value: Environment | undefined) {
+    this._environment = value;
+  }
 
-    set networkSize(value: number) {
-        this._networkSize = value;
-    }
+  get simulationConfig(): SimulationConfig {
+    return this._simulationConfig;
+  }
 
-    get seedSize(): number {
-        return this._seedSize;
-    }
+  set simulationConfig(value: SimulationConfig) {
+    this._simulationConfig = value;
+  }
 
-    set seedSize(value: number) {
-        this._seedSize = value;
-    }
+  get id(): number {
+    return this._id;
+  }
 
-    get periods(): number {
-        return this._periods;
-    }
+  set id(value: number) {
+    this._id = value;
+  }
 
-    set periods(value: number) {
-        this._periods = value;
-    }
+  get networkSize(): number {
+    return this._networkSize;
+  }
+
+  set networkSize(value: number) {
+    this._networkSize = value;
+  }
+
+  get seedSize(): number {
+    return this._seedSize;
+  }
+
+  set seedSize(value: number) {
+    this._seedSize = value;
+  }
+
+  get periods(): number {
+    return this._periods;
+  }
+
+  set periods(value: number) {
+    this._periods = value;
+  }
 }

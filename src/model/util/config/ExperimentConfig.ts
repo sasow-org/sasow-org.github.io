@@ -1,77 +1,83 @@
-import {SimulationConfig} from "./SimulationConfig";
+import { SimulationConfig } from './SimulationConfig';
 
 export class ExperimentConfig {
-    private _name : string;
-    private _description : string;
-    private _repetitions: number;
-    private _essentialData : boolean;
-    private _configuratorData : boolean;
-    private _detailedData: boolean;
-    private _simulationConfig: SimulationConfig;
+  private _name : string;
 
-    constructor(simulationConfig: SimulationConfig) {
-        this._simulationConfig = simulationConfig;
-        //this._name = ""
-        //this._description = ""
-        //this._repetitions = -1;
-        //this._essentialData = false;
-        //this._configuratorData = false;
-        //this._detailedData = false;
-    }
+  private _description : string;
 
-    get name(): string {
-        return this._name;
-    }
+  private _repetitions: number;
 
-    set name(value: string) {
-        this._name = value;
-    }
+  private _essentialData : boolean;
 
-    get description(): string {
-        return this._description;
-    }
+  private _configuratorData : boolean;
 
-    set description(value: string) {
-        this._description = value;
-    }
+  private _detailedData: boolean;
 
-    get repetitions(): number {
-        return this._repetitions;
-    }
+  private _simulationConfig: SimulationConfig;
 
-    set repetitions(value: number) {
-        this._repetitions = value;
-    }
+  constructor(simulationConfig: SimulationConfig) {
+    this._simulationConfig = simulationConfig;
+    // this._name = ""
+    // this._description = ""
+    // this._repetitions = -1;
+    // this._essentialData = false;
+    // this._configuratorData = false;
+    // this._detailedData = false;
+  }
 
-    get essentialData(): boolean {
-        return this._essentialData;
-    }
+  get name(): string {
+    return this._name;
+  }
 
-    set essentialData(value: boolean) {
-        this._essentialData = value;
-    }
+  set name(value: string) {
+    this._name = value;
+  }
 
-    get configuratorData(): boolean {
-        return this._configuratorData;
-    }
+  get description(): string {
+    return this._description;
+  }
 
-    set configuratorData(value: boolean) {
-        this._configuratorData = value;
-    }
+  set description(value: string) {
+    this._description = value;
+  }
 
-    get detailedData(): boolean {
-        return this._detailedData;
-    }
+  get repetitions(): number {
+    return this._repetitions;
+  }
 
-    set detailedData(value: boolean) {
-        this._detailedData = value;
-    }
+  set repetitions(value: number) {
+    this._repetitions = value;
+  }
 
-    get simulationConfig(): SimulationConfig {
-        return this._simulationConfig;
-    }
+  get essentialData(): boolean {
+    return this._essentialData;
+  }
 
-    set simulationConfig(value: SimulationConfig) {
-        this._simulationConfig = value;
-    }
+  set essentialData(value: boolean) {
+    this._essentialData = value;
+  }
+
+  get configuratorData(): boolean {
+    return this._configuratorData;
+  }
+
+  set configuratorData(value: boolean) {
+    this._configuratorData = value;
+  }
+
+  get detailedData(): boolean {
+    return this._detailedData;
+  }
+
+  set detailedData(value: boolean) {
+    this._detailedData = value;
+  }
+
+  get simulationConfig(): SimulationConfig {
+    return this._simulationConfig;
+  }
+
+  set simulationConfig(value: SimulationConfig) {
+    this._simulationConfig = value;
+  }
 }
