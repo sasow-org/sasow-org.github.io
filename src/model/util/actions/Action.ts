@@ -1,33 +1,34 @@
-import {Agent} from "../../essential/Agent";
+import { Agent } from '../../essential/Agent';
 
 export abstract class Action {
-    private _name: String;
-    private _probability: number;
+  private _name: string;
 
-    constructor(name: String, probability: number) {
-        this._name = name;
-        this._probability = probability;
-    }
+  private _probability: number;
 
-    public abstract Execute(agent: Agent) : void;
+  constructor(name: string, probability: number) {
+    this._name = name;
+    this._probability = probability;
+  }
 
-    public getRandom() : number {
-        return (Math.random() * 100 + 1);
-    }
+  public abstract Execute(agent: Agent) : void;
 
-    get name(): String {
-        return this._name;
-    }
+  public getRandom() : number {
+    return (Math.random() * 100 + 1);
+  }
 
-    set name(value: String) {
-        this._name = value;
-    }
+  get name(): string {
+    return this._name;
+  }
 
-    get probability(): number {
-        return this._probability;
-    }
+  set name(value: string) {
+    this._name = value;
+  }
 
-    set probability(value: number) {
-        this._probability = value;
-    }
+  get probability(): number {
+    return this._probability;
+  }
+
+  set probability(value: number) {
+    this._probability = value;
+  }
 }

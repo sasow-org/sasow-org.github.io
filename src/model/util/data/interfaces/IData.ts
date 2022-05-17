@@ -1,8 +1,8 @@
-import {RowData} from "../RowData";
+import { RowData } from '../RowData';
 
-export interface IData{
+export interface IData {
 
-    DataEssential() : RowData;
-    DataDetailed() : RowData;
+  DataEssential() : RowData;
+  DataDetailed() : RowData;
 
 }

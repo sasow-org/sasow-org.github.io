@@ -16,7 +16,7 @@ export default function TemplateLayout(props){
     const [experimentConfig, setExperimentConfig] = useState(props.experimentConfig)
 
     return (
-        <Box mt={2} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
+        <Box mt={2} padding={"15px"} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
         }}>
             <Grid container spacing={1}>
                 <Grid item xs={12}>

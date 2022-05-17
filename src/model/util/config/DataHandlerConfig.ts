@@ -1,36 +1,37 @@
-
 export class DataHandlerConfig {
-    private _isEssentialData: boolean;
-    private _isDetailedData: boolean;
-    private _experimentName: string;
+  private _isEssentialData: boolean;
 
-    constructor(experimentName: string, essentialData: boolean, detailedData: boolean) {
-        this._isEssentialData = essentialData
-        this._isDetailedData = detailedData
-        this._experimentName = experimentName
-    }
+  private _isDetailedData: boolean;
 
-    get isEssentialData(): boolean {
-        return this._isEssentialData;
-    }
+  private _experimentName: string;
 
-    set isEssentialData(value: boolean) {
-        this._isEssentialData = value;
-    }
+  constructor(experimentName: string, essentialData: boolean, detailedData: boolean) {
+    this._isEssentialData = essentialData;
+    this._isDetailedData = detailedData;
+    this._experimentName = experimentName;
+  }
 
-    get isDetailedData(): boolean {
-        return this._isDetailedData;
-    }
+  get isEssentialData(): boolean {
+    return this._isEssentialData;
+  }
 
-    set isDetailedData(value: boolean) {
-        this._isDetailedData = value;
-    }
+  set isEssentialData(value: boolean) {
+    this._isEssentialData = value;
+  }
 
-    get experimentName(): string {
-        return this._experimentName;
-    }
+  get isDetailedData(): boolean {
+    return this._isDetailedData;
+  }
 
-    set experimentName(value: string) {
-        this._experimentName = value;
-    }
+  set isDetailedData(value: boolean) {
+    this._isDetailedData = value;
+  }
+
+  get experimentName(): string {
+    return this._experimentName;
+  }
+
+  set experimentName(value: string) {
+    this._experimentName = value;
+  }
 }

@@ -1,5 +1,5 @@
-import {RowData} from "../RowData";
+import { RowData } from '../RowData';
 
 export interface IDataEssential {
-    DataEssential() : RowData;
+  DataEssential() : RowData;
 }

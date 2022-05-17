@@ -1,6 +1,5 @@
-
 export interface IObservable {
 
-    notifyData() : void;
+  notifyData() : void;
 
 }
