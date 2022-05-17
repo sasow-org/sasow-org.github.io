@@ -1,16 +1,48 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb-typescript"
+    "airbnb-base",
+    "airbnb-typescript/base"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import"
+  ],
+  "rules": {
+    //"import/prefer-default-export": "off",
+    "no-underscore-dangle": "off",
+    //"no-duplicate-imports": "off",
+    "no-plusplus": "off",
+    "class-methods-use-this": "off",
+    "import/no-cycle": "off",
+    "array-callback-return": "off",
+    "max-len": "off",
+    "consistent-return": "off",
+    "no-console": "off",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/ban-types": "off",
+    "no-param-reassign": "off",
+    "no-mixed-operators": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
+
+

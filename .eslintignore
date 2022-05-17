@@ -2,3 +2,13 @@ node_modules
 build
 public
 .github
+src/components/*
+src/App.css
+src/App.test.tsx
+src/App.tsx
+src/index.css
+src/index.tsx
+src/logo.svg
+src/react-app-env.d.ts
+src/reportWebVitals.ts
+src/setupTests.ts
