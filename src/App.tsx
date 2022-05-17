@@ -57,7 +57,7 @@ function App() {
     }
 
     const experimentConfig = {
-        experimentName: "123",
+        experimentName: "Experiment Name Default",
         repetitions: 1,
         networkSize: 1000,
         seedSize: 50,
@@ -68,7 +68,7 @@ function App() {
         ],
         essentialData: true,
         detailedData: true,
-        experimentType: "TwitterExperiment"//referencia a la clase que se deberia instanciar
+        experimentType: "TwitterConfig"//referencia a la clase que se deberia instanciar
     };
 
 

@@ -15,10 +15,11 @@ const networkOptions = [
 
 export default function NetworkSelector(props) {
 
-    const [network, setNetwork] = useState(props.experimentType)
+    const [network, setNetwork] = useState(props.experimentConfig.experimentType)
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNetwork(event.target.value)
+        props.experimentConfig.experimentType = event.target.value
     }
 
     return(
