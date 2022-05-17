@@ -1,5 +1,4 @@
 import {DataHandlerConfig} from "../../model/util/config/DataHandlerConfig";
-import {ExperimentTwitter} from "../../model/environments/twitter/ExperimentTwitter";
 import {Button} from "@mui/material";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 import React, {useState} from "react";
@@ -9,6 +8,7 @@ import {ActionRead} from "../../model/util/actions/commands/ActionRead";
 import {AgentConfig} from "../../model/util/config/AgentConfig";
 import {SimulationConfig} from "../../model/util/config/SimulationConfig";
 import {TwitterAgent} from "../../model/environments/twitter/TwitterAgent";
+import {GenericExperiment} from "../../model/essential/GenericExperiment";
 
 export default function StartButton(props) {
 
@@ -20,7 +20,7 @@ export default function StartButton(props) {
     const dataHandlerConfig: DataHandlerConfig = new DataHandlerConfig(name, experimentConfig.essentialData, experimentConfig.detailedData);
 
     const startExperiment = async () =>  {
-        let experimentTwitter : ExperimentTwitter = new ExperimentTwitter(repetitions, name, description, dataHandlerConfig,
+        let experimentTwitter : GenericExperiment = new GenericExperiment(repetitions, name, description, dataHandlerConfig,
             () => {
                 const networkSize : number = props.experimentConfig.networkSize;
                 const seedSize: number = props.experimentConfig.seedSize;
