@@ -9,6 +9,7 @@ import {AgentConfig} from "../../model/util/config/AgentConfig";
 import {SimulationConfig} from "../../model/util/config/SimulationConfig";
 import {TwitterAgent} from "../../model/environments/twitter/TwitterAgent";
 import {GenericExperiment} from "../../model/essential/GenericExperiment";
+import * as ts from "typescript"
 
 export default function StartButton(props) {
 
@@ -20,70 +21,60 @@ export default function StartButton(props) {
     const dataHandlerConfig: DataHandlerConfig = new DataHandlerConfig(name, experimentConfig.essentialData, experimentConfig.detailedData);
 
     const startExperiment = async () =>  {
-        let experimentTwitter : GenericExperiment = new GenericExperiment(repetitions, name, description, dataHandlerConfig,
+        let experiment : GenericExperiment = new GenericExperiment(repetitions, name, description, dataHandlerConfig,
             () => {
                 const networkSize : number = props.experimentConfig.networkSize;
                 const seedSize: number = props.experimentConfig.seedSize;
                 const periods : number = props.experimentConfig.periods;
 
-
                 console.log(props.experimentConfig)
 
-
-
-                //let actionShare = new ActionShare("share", 0.03)
-                //let lRead = new ActionRead("read", 0.5);
-                //commands.push(actionShare)
-                //commands.push(lRead)
-
-                //let avSeedConfig : AgentConfig = new AgentConfig(Agent.PREPARE_FOR_SHARE, commands, true, seedSize,  1, 0)
-
-                //let avrConfig : AgentConfig = new AgentConfig(Agent.NOREAD, commands, false, networkSize - seedSize,  0.1, 0)
-
                 let agentsConfigs : AgentConfig[] = [];
-
-                props.experimentConfig.agentsConfigs.map( (agentConfig) => {
+                //Por cada agent config
+                props.experimentConfig.agentsConfigs.forEach((agentConfig) => {
 
                     console.log(agentConfig)
-
+                    //Crea sus comandos.
                     let commands : Action[] = [];
-                    agentConfig.actions.map(  (action) => {
-                        if(action.type === "ActionRead"){
-                            commands.push(new ActionRead(action.name, action.probability))
-                        }
-
-                        if(action.type === "ActionShare"){
-                            commands.push(new ActionShare(action.name, action.probability))
-                        }
-
-                        return
+                    agentConfig.actions.forEach( async (action) => {
+                        let actionString = "new "+action.type+"("+action.name+", "+ action.probability+")";
+                        //let result = ts.transpile(actionString)
+                        //let runnable : any = eval(result)
+                        //runnable.Run("RUN!").then((result) => {commands.push(result)})
+                        //commands.push();
+                        let action2String = "commands.push("+actionString+");"
+                        eval(actionString);
                     })
 
-                    if(agentConfig.agentType === "TwitterAgent"){
-                        let auxConfig : AgentConfig = new AgentConfig(
-                            agentConfig.configName,
-                            agentConfig.initialState,
-                            commands,
-                            agentConfig.isSeed,
-                            agentConfig.quantityAgent,
-                            agentConfig.percentageFollowers,
-                            agentConfig.percentageFollowings
-                        )
-                        agentsConfigs.push(auxConfig)
-                    }
+                    //Crea la configuracion, seteando lo siguiente
+                    //--> configName
+                    //--> initalState
+                    //--> commands
+                    //--> si es seed
+                    //--> cantidad de ese agente (esto se calcula mediante porcentage * networkSize)
+                    //--> porcentage de seguidores y seguidos
+                    let auxConfig : AgentConfig = new AgentConfig(
+                        agentConfig.configName,
+                        agentConfig.initialState,
+                        commands,
+                        agentConfig.isSeed,
+                        agentConfig.quantityAgent,
+                        agentConfig.percentageFollowers,
+                        agentConfig.percentageFollowings
+                    )
+                    //agrega esta nueva cofiguracion a la lista de configs de agentes
+                    agentsConfigs.push(auxConfig)
 
-                    console.log(commands)
-                    console.log(agentsConfigs)
+                    //muestra la data
+                    console.log("Commands: ", commands)// --> si bien funciona, al usar eval, esto no pasa.
+                    console.log("Agent Configs: ", agentsConfigs)
 
-                    return
                 })
 
-                //agentsConfigs.push(avSeedConfig)
-                //agentsConfigs.push(avrConfig)
-                return new SimulationConfig(periods, networkSize, seedSize, agentsConfigs);
+                return new SimulationConfig(periods, networkSize, seedSize, agentsConfigs);//Envia la simulation config
             }
         )
-        await   experimentTwitter.run();
+        await   experiment.run();
     }
 
     return (
