@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Box, Button, Grid, MenuItem, Modal, TextField} from "@mui/material";
+import {Box, Button, Container, Grid, MenuItem, Modal, TextField} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import ActionConfigsTable from "../Table/ActionConfigsTable";
 import AddIcon from '@mui/icons-material/Add';
@@ -63,7 +63,7 @@ export default function ModalEditAgentConfig(props) {
 
 
     return (
-        <div>
+        <Container>
             <Button onClick={handleOpen}>
                 <EditIcon/>
             </Button>
@@ -147,6 +147,6 @@ export default function ModalEditAgentConfig(props) {
                     </Grid>
                 </Box>
             </Modal>
-        </div>
+        </Container>
     );
 }
