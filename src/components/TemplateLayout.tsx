@@ -8,24 +8,18 @@ import OutputIterationsCard from "./Cards/OutputIterationsCard/OutputIterationsC
 import Box from "@mui/material/Box";
 import {useState} from "react";
 
-
-
-
 export default function TemplateLayout(props){
 
     const [experimentConfig, setExperimentConfig] = useState(props.experimentConfig)
 
     return (
-        <Box mt={2} padding={"15px"} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
+        <Box mt={2} paddingX={"15px"} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
         }}>
             <Grid container spacing={1}>
-                <Grid item xs={12}>
-                    <ExperimentsOptionsCard />
-                </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                     <ExperimentInputCard experimentConfig={experimentConfig}/>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={8}>
                     <ConfigurationCard experimentConfig={experimentConfig}/>
                 </Grid>
                 <Grid item xs={12}>
