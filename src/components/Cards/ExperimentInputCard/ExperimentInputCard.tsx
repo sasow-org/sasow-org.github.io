@@ -1,5 +1,6 @@
 import {Card, Grid, TextField} from "@mui/material";
 import React, {useState} from "react";
+import NetworkSelector from "../../TextField/NetworkSelector";
 
 
 export default function ExperimentInputCard(props) {
@@ -56,15 +57,17 @@ export default function ExperimentInputCard(props) {
         padding:"15px"
     }}>
         <Grid container spacing={1}>
+            <Grid item xs ={12}>
+                <NetworkSelector experimentConfig={experimentConfig}/>
+            </Grid>
             <Grid item xs={12}>
-                <h1>ExperimentInputConfigurator</h1>
+                <h3>ExperimentInputConfigurator</h3>
             </Grid>
             <Grid item xs={12}>
                 <TextField
                     fullWidth
                     required
                     label="Experiment Name"
-                    defaultValue=""
                     value={experimentName}
                     onChange={handleExperimentNameChange}
                 />
@@ -83,7 +86,6 @@ export default function ExperimentInputCard(props) {
                     fullWidth
                     required
                     label="Network Size"
-                    defaultValue=""
                     value={networkSize}
                     onChange={handleNetworkSizeChange}
                 />
@@ -93,9 +95,9 @@ export default function ExperimentInputCard(props) {
                     fullWidth
                     required
                     label="Seed Size"
-                    defaultValue=""
                     value={seedSize}
                     onChange={handleSeedSizeChange}
+                    disabled
                 />
             </Grid>
             <Grid item xs={12}>
@@ -103,7 +105,6 @@ export default function ExperimentInputCard(props) {
                     fullWidth
                     required
                     label="Periods"
-                    defaultValue=""
                     value={periods}
                     onChange={handlePeriodsChange}
                 />
