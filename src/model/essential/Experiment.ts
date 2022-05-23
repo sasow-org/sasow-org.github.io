@@ -2,7 +2,6 @@ import { Simulation } from './Simulation';
 import { ExperimentConfig } from '../util/config/ExperimentConfig';
 import { SimulationConfig } from '../util/config/SimulationConfig';
 import { DataHandler } from '../util/datahandler/DataHandler';
-import { DataHandlerConfig } from '../util/config/DataHandlerConfig';
 import { IObservable } from '../util/datahandler/observer/IObservable';
 import { IDataEssential } from '../util/data/interfaces/IDataEssential';
 import { RowData } from '../util/data/RowData';
@@ -23,20 +22,18 @@ export abstract class Experiment implements IObservable, IDataEssential {
   private _simulationConfig: SimulationConfig;
 
   protected constructor(
-    maxRepetitions: number,
-    name: string,
-    description: string,
-    dataHandlerConfig: DataHandlerConfig,
+    experimentConfig: ExperimentConfig,
     doConfig: Function,
   ) {
+    this._experimentConfig = experimentConfig;
     this._repetitionNumber = 0;
-    this._maxRepetitions = maxRepetitions;
-    this._name = name;
-    this._description = description;
-    DataHandler.getInstance().dataHandlerConfig = dataHandlerConfig;
+    this._maxRepetitions = experimentConfig.repetitions;
+    this._name = experimentConfig.name;
+    this._description = experimentConfig.description;
+    DataHandler.getInstance().dataHandlerConfig = experimentConfig.DataHandlerConfig;
+    DataHandler.getInstance().experimentConfig = experimentConfig;
     this._simulationConfig = this.configure(doConfig);
-    this.configureExperimentConfig();
-    DataHandler.getInstance().experimentConfig = this._experimentConfig;
+    this._experimentConfig.simulationConfig = this._simulationConfig;
   }
 
   public run() : void {
@@ -58,15 +55,6 @@ export abstract class Experiment implements IObservable, IDataEssential {
 
   public configure(doConfig: Function) : SimulationConfig {
     return doConfig();
-  }
-
-  private configureExperimentConfig() {
-    this._experimentConfig = new ExperimentConfig(this._simulationConfig);
-    this._experimentConfig.name = this._name;
-    this._experimentConfig.description = this._description;
-    this._experimentConfig.repetitions = this._maxRepetitions;
-    this._experimentConfig.essentialData = DataHandler.getInstance().dataHandlerConfig.isEssentialData;
-    this._experimentConfig.detailedData = DataHandler.getInstance().dataHandlerConfig.isDetailedData;
   }
 
   DataEssential(): RowData {

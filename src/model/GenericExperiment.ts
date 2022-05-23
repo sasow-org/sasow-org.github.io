@@ -1,11 +1,11 @@
-import { Experiment } from './Experiment';
-import { DataHandlerConfig } from '../util/config/DataHandlerConfig';
-import { SimulationTwitter } from '../environments/twitter/SimulationTwitter';
-import { DataHandler } from '../util/datahandler/DataHandler';
+import { Experiment } from './essential/Experiment';
+import { SimulationTwitter } from './environments/twitter/SimulationTwitter';
+import { DataHandler } from './util/datahandler/DataHandler';
+import { ExperimentConfig } from './util/config/ExperimentConfig';
 
 export class GenericExperiment extends Experiment {
-  constructor(repetitions: number, name: string, description : string, dataHandlerConfig : DataHandlerConfig, doConfig: Function) {
-    super(repetitions, name, description, dataHandlerConfig, doConfig);
+  constructor(experimentConfig: ExperimentConfig, doConfig: Function) {
+    super(experimentConfig, doConfig);
   }
 
   initialize(id: number): void {

@@ -1,6 +1,6 @@
-import { Action } from '../actions/Action';
+import { ActionConfigData } from './ActionConfigData';
 
-export class AgentConfig {
+export class AgentConfigData {
   private _quantityAgent: number;
 
   private _percentageFollowers: number;
@@ -9,17 +9,17 @@ export class AgentConfig {
 
   private _isSeed: boolean;
 
-  private _actions: Action[];
+  private _actionsData: ActionConfigData[];
 
   private _nameConfig: string;
 
   private _initialState: number;
 
-  constructor(configName: string, initialState: number, agentActions: Action[], isSeed: boolean, quantityAgent: number, percentageFollowers: number, percentageFollowings: number) {
+  constructor(configName: string, initialState: number, actionsData: ActionConfigData[], isSeed: boolean, quantityAgent: number, percentageFollowers: number, percentageFollowings: number) {
     this._quantityAgent = quantityAgent;
     this._percentageFollowers = percentageFollowers;
     this._percentageFollowings = percentageFollowings;
-    this._actions = agentActions;
+    this._actionsData = actionsData;
     this._nameConfig = configName;
     this._isSeed = isSeed;
     this._initialState = initialState;
@@ -49,12 +49,20 @@ export class AgentConfig {
     this._percentageFollowings = value;
   }
 
-  get actions(): Action[] {
-    return this._actions;
+  get isSeed(): boolean {
+    return this._isSeed;
   }
 
-  set actions(value: Action[]) {
-    this._actions = value;
+  set isSeed(value: boolean) {
+    this._isSeed = value;
+  }
+
+  get actionsData(): ActionConfigData[] {
+    return this._actionsData;
+  }
+
+  set actionsData(value: ActionConfigData[]) {
+    this._actionsData = value;
   }
 
   get nameConfig(): string {
@@ -65,27 +73,11 @@ export class AgentConfig {
     this._nameConfig = value;
   }
 
-  get isSeed(): boolean {
-    return this._isSeed;
-  }
-
-  set isSeed(value: boolean) {
-    this._isSeed = value;
-  }
-
   get initialState(): number {
     return this._initialState;
   }
 
   set initialState(value: number) {
     this._initialState = value;
-  }
-
-  public getQuantityFollowersByNetwork(networkSize: number) {
-    return Number.parseInt(`${this.percentageFollowers * networkSize / 100}`, 10);// Todo maybe this can be better.
-  }
-
-  public getQuantityFollowingsByNetwork(networkSize: number) {
-    return Number.parseInt(`${this.percentageFollowings * networkSize / 100}`, 10);// Todo maybe this can be better.
   }
 }

@@ -1,5 +1,5 @@
-import { Creator } from './Creator';
-import { Product } from './Product';
+import { Creator } from './patern/Creator';
+import { Product } from './patern/Product';
 import { TwitterAgent } from '../../environments/twitter/TwitterAgent';
 import { AgentConfig } from '../config/AgentConfig';
 

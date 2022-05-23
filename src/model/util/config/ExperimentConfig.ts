@@ -1,4 +1,5 @@
 import { SimulationConfig } from './SimulationConfig';
+import { DataHandlerConfig } from './DataHandlerConfig';
 
 export class ExperimentConfig {
   private _name : string;
@@ -7,22 +8,21 @@ export class ExperimentConfig {
 
   private _repetitions: number;
 
-  private _essentialData : boolean;
-
-  private _configuratorData : boolean;
-
-  private _detailedData: boolean;
+  private _DataHandlerConfig: DataHandlerConfig;
 
   private _simulationConfig: SimulationConfig;
 
-  constructor(simulationConfig: SimulationConfig) {
-    this._simulationConfig = simulationConfig;
-    // this._name = ""
-    // this._description = ""
-    // this._repetitions = -1;
-    // this._essentialData = false;
-    // this._configuratorData = false;
-    // this._detailedData = false;
+  constructor(
+    name: string,
+    description: string,
+    repetitions: number,
+    essentialData: boolean,
+    detailedData: boolean,
+  ) {
+    this._name = name;
+    this._description = description;
+    this._repetitions = repetitions;
+    this._DataHandlerConfig = new DataHandlerConfig(name, essentialData, detailedData);
   }
 
   get name(): string {
@@ -49,35 +49,19 @@ export class ExperimentConfig {
     this._repetitions = value;
   }
 
-  get essentialData(): boolean {
-    return this._essentialData;
-  }
-
-  set essentialData(value: boolean) {
-    this._essentialData = value;
-  }
-
-  get configuratorData(): boolean {
-    return this._configuratorData;
-  }
-
-  set configuratorData(value: boolean) {
-    this._configuratorData = value;
-  }
-
-  get detailedData(): boolean {
-    return this._detailedData;
-  }
-
-  set detailedData(value: boolean) {
-    this._detailedData = value;
-  }
-
   get simulationConfig(): SimulationConfig {
     return this._simulationConfig;
   }
 
   set simulationConfig(value: SimulationConfig) {
     this._simulationConfig = value;
+  }
+
+  get DataHandlerConfig(): DataHandlerConfig {
+    return this._DataHandlerConfig;
+  }
+
+  set DataHandlerConfig(value: DataHandlerConfig) {
+    this._DataHandlerConfig = value;
   }
 }

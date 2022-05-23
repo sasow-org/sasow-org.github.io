@@ -3,7 +3,7 @@ import { IDataDetailed } from '../util/data/interfaces/IDataDetailed';
 import { IObservable } from '../util/datahandler/observer/IObservable';
 import { RowData } from '../util/data/RowData';
 import { AgentConfig } from '../util/config/AgentConfig';
-import { Product } from '../util/factory/Product';
+import { Product } from '../util/factory/patern/Product';
 
 export abstract class Agent implements IDataDetailed, IObservable, Product {
   public static SHARED = -1;
