@@ -1,12 +1,12 @@
 import * as ts from 'typescript';
 import { SimulationConfig } from '../config/SimulationConfig';
-import { GenericExperiment } from '../../GenericExperiment';
+import { GenericExperiment } from '../../environments/GenericExperiment';
 import { ExperimentConfig } from '../config/ExperimentConfig';
 import { AgentConfig } from '../config/AgentConfig';
-import { AgentConfigData } from '../config/Data/AgentConfigData';
-import { ActionConfigData } from '../config/Data/ActionConfigData';
+import { AgentConfigData } from '../config/data/AgentConfigData';
+import { ActionConfigData } from '../config/data/ActionConfigData';
 import { Action } from '../actions/Action';
-import { ExperimentConfigData } from '../config/Data/ExperimentConfigData';
+import { ExperimentConfigData } from '../config/data/ExperimentConfigData';
 
 export class ExperimentFactory {
   public createExperiment(
@@ -26,7 +26,7 @@ export class ExperimentFactory {
             console.log('result after transpile: ', result);
             const runnable : any = eval(result);
             console.log('runnable is: ', runnable);
-            const x:any = await runnable.Run('RUN!').then((res) => { actions.push(res); console.log('DENTRO DE runnable, res:  -->', res); });
+            const x:any = runnable.Run('RUN!').then((res: any) => { console.log('DENTRO DE runnable, res:  -->', res); actions.push(res); });
             console.log(x);
           });
 

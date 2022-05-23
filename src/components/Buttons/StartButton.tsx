@@ -3,9 +3,9 @@ import {Button} from "@mui/material";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 import React, {useState} from "react";
 import {ExperimentFactory} from "../../model/util/factory/ExperimentFactory";
-import {ExperimentConfigData} from "../../model/util/config/Data/ExperimentConfigData";
-import {AgentConfigData} from "../../model/util/config/Data/AgentConfigData";
-import {ActionConfigData} from "../../model/util/config/Data/ActionConfigData";
+import {ExperimentConfigData} from "../../model/util/config/data/ExperimentConfigData";
+import {AgentConfigData} from "../../model/util/config/data/AgentConfigData";
+import {ActionConfigData} from "../../model/util/config/data/ActionConfigData";
 
 export default function StartButton(props) {
 
