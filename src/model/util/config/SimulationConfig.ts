@@ -7,7 +7,10 @@ export class SimulationConfig {
 
   private _periods: number;
 
-  constructor(periods: number, networkSize: number, seedSize: number, agentsConfigs: AgentConfig[]) {
+  private _simulationType: string;
+
+  constructor(simulationType: string, periods: number, networkSize: number, seedSize: number, agentsConfigs: AgentConfig[]) {
+    this._simulationType = simulationType;
     this._networkSize = networkSize;
     this._agentsConfigs = agentsConfigs;
     this._periods = periods;
@@ -45,5 +48,13 @@ export class SimulationConfig {
 
   set periods(value: number) {
     this._periods = value;
+  }
+
+  get simulationType(): string {
+    return this._simulationType;
+  }
+
+  set simulationType(value: string) {
+    this._simulationType = value;
   }
 }

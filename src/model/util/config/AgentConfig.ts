@@ -15,7 +15,10 @@ export class AgentConfig {
 
   private _initialState: number;
 
-  constructor(configName: string, initialState: number, agentActions: Action[], isSeed: boolean, quantityAgent: number, percentageFollowers: number, percentageFollowings: number) {
+  private _agentType: string;
+
+  constructor(agentType: string, configName: string, initialState: number, agentActions: Action[], isSeed: boolean, quantityAgent: number, percentageFollowers: number, percentageFollowings: number) {
+    this._agentType = agentType;
     this._quantityAgent = quantityAgent;
     this._percentageFollowers = percentageFollowers;
     this._percentageFollowings = percentageFollowings;
@@ -79,6 +82,14 @@ export class AgentConfig {
 
   set initialState(value: number) {
     this._initialState = value;
+  }
+
+  get agentType(): string {
+    return this._agentType;
+  }
+
+  set agentType(value: string) {
+    this._agentType = value;
   }
 
   public getQuantityFollowersByNetwork(networkSize: number) {

@@ -1,7 +1,6 @@
 import { Experiment } from '../essential/Experiment';
-import { SimulationTwitter } from './twitter/SimulationTwitter';
-import { DataHandler } from '../util/datahandler/DataHandler';
 import { ExperimentConfig } from '../util/config/ExperimentConfig';
+import { FactoryDynamicClass } from '../util/factory/FactoryDynamicClass';
 
 export class GenericExperiment extends Experiment {
   constructor(experimentConfig: ExperimentConfig, doConfig: Function) {
@@ -9,11 +8,12 @@ export class GenericExperiment extends Experiment {
   }
 
   initialize(id: number): void {
-    console.log('Inicializando experiment  id: ', id); // todo change this with eval, to evite hardcoding.
-    this.simulation = new SimulationTwitter(id, this.simulationConfig);
-    this.simulation.initialize();
-    DataHandler.getInstance().experiment = this;
-    DataHandler.getInstance().simulation = this.simulation;
-    DataHandler.getInstance().environment = this.simulation.environment;
+    // this.simulation = new SimulationTwitter(id, this.simulationConfig);
+    const simulationClassRef = FactoryDynamicClass.getInstance().getSimulation(this.experimentConfig.experimentType);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line new-cap
+    this.simulation = new simulationClassRef(id, this.simulationConfig);
+    super.initialize(id);
   }
 }

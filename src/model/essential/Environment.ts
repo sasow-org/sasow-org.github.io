@@ -7,6 +7,7 @@ import { AgentConfig } from '../util/config/AgentConfig';
 import { AgentTwitterFactory } from '../util/factory/AgentTwitterFactory';
 import { DataHandler } from '../util/datahandler/DataHandler';
 import { TwitterAgent } from '../environments/twitter/TwitterAgent';
+import { FactoryDynamicClass } from '../util/factory/FactoryDynamicClass';
 
 export abstract class Environment implements IObservable, IDataEssential, IDataDetailed {
   protected _id: number;
@@ -130,7 +131,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
       const atf : AgentTwitterFactory = new AgentTwitterFactory(agentConfig);// TODO make generic to insert Facebook or Twitter agent.
       const auxAgent: TwitterAgent = atf.create(i);
       this.users.push(auxAgent);
-
+      // const auxAgentRef = FactoryDynamicClass.getInstance().getAgent();
       if (auxAgent.isSeed) {
         this.seeds.push(auxAgent);
       }

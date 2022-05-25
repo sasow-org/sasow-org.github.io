@@ -111,14 +111,6 @@ export class DataHandler implements IObserver {
     this._instance = null;
   }
 
-  static get instance(): DataHandler {
-    return this._instance;
-  }
-
-  static set instance(value: DataHandler) {
-    this._instance = value;
-  }
-
   get experiment(): Experiment {
     return this._experiment;
   }

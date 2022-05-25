@@ -12,13 +12,17 @@ export class ExperimentConfig {
 
   private _simulationConfig: SimulationConfig;
 
+  private _experimentType: string;
+
   constructor(
+    experimentType: string,
     name: string,
     description: string,
     repetitions: number,
     essentialData: boolean,
     detailedData: boolean,
   ) {
+    this._experimentType = experimentType;
     this._name = name;
     this._description = description;
     this._repetitions = repetitions;
@@ -63,5 +67,13 @@ export class ExperimentConfig {
 
   set DataHandlerConfig(value: DataHandlerConfig) {
     this._DataHandlerConfig = value;
+  }
+
+  get experimentType(): string {
+    return this._experimentType;
+  }
+
+  set experimentType(value: string) {
+    this._experimentType = value;
   }
 }

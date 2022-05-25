@@ -19,7 +19,10 @@ export class ExperimentConfigData {
 
   private _agentConfigsData: AgentConfigData[];
 
+  private _experimentType: string;
+
   constructor(
+    experimentType: string,
     name: string,
     description: string,
     repetitions: number,
@@ -30,6 +33,7 @@ export class ExperimentConfigData {
     seedSize: number,
     agentConfigsData: AgentConfigData[],
   ) {
+    this._experimentType = experimentType;
     this._agentConfigsData = agentConfigsData;
     this._name = name;
     this._description = description;
@@ -111,5 +115,13 @@ export class ExperimentConfigData {
 
   set agentConfigsData(value: AgentConfigData[]) {
     this._agentConfigsData = value;
+  }
+
+  get experimentType(): string {
+    return this._experimentType;
+  }
+
+  set experimentType(value: string) {
+    this._experimentType = value;
   }
 }

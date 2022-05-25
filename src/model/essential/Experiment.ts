@@ -32,6 +32,7 @@ export abstract class Experiment implements IObservable, IDataEssential {
     this._description = experimentConfig.description;
     DataHandler.getInstance().dataHandlerConfig = experimentConfig.DataHandlerConfig;
     DataHandler.getInstance().experimentConfig = experimentConfig;
+    DataHandler.getInstance().experiment = this;
     this._simulationConfig = this.configure(doConfig);
     this._experimentConfig.simulationConfig = this._simulationConfig;
   }
@@ -51,7 +52,12 @@ export abstract class Experiment implements IObservable, IDataEssential {
     console.log('Ending Experiment ');
   }
 
-  public abstract initialize(id: number) : void ;
+  public initialize(id: number) : void {
+    console.log('Inicializando experiment  id: ', id);
+    this.simulation.initialize();
+    DataHandler.getInstance().simulation = this.simulation;
+    DataHandler.getInstance().environment = this.simulation.environment;
+  }
 
   public configure(doConfig: Function) : SimulationConfig {
     return doConfig();

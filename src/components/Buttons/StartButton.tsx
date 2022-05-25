@@ -27,7 +27,8 @@ export default function StartButton(props) {
 
             configData.push(
                 new AgentConfigData(
-                    agentConfig.name,
+                    agentConfig.type,
+                    agentConfig.configName,
                     agentConfig.initialState,
                     actions,
                     agentConfig.isSeed,
@@ -44,6 +45,7 @@ export default function StartButton(props) {
         const agentConfigsData : AgentConfigData[] = getAgentConfigData()
 
         const experimentConfigData : ExperimentConfigData = new ExperimentConfigData(
+            experimentConfig.experimentType,
             name,
             description,
             repetitions,
