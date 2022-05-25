@@ -7,6 +7,7 @@ import { AgentConfigData } from '../config/data/AgentConfigData';
 import { ActionConfigData } from '../config/data/ActionConfigData';
 import { Action } from '../actions/Action';
 import { ExperimentConfigData } from '../config/data/ExperimentConfigData';
+import { FactoryDynamicClass } from './FactoryDynamicClass';
 
 export class ExperimentFactory {
   public createExperiment(
@@ -20,7 +21,12 @@ export class ExperimentFactory {
         experimentConfigData.agentConfigsData.forEach((agentConfigData: AgentConfigData) => {
           const actions : Action[] = [];
 
-          agentConfigData.actionsData.forEach(async (actionData: ActionConfigData) => {
+          agentConfigData.actionsData.forEach((actionData: ActionConfigData) => {
+            const ActionRef = FactoryDynamicClass.getInstance().getAction(actionData.type);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            actions.push(new ActionRef(actionData.name, actionData.probability));
+            /*
             const actionString = `new ${actionData.type}('${actionData.name}',${actionData.probability});`;
             const result = ts.transpile(actionString);
             console.log('result after transpile: ', result);
@@ -28,6 +34,8 @@ export class ExperimentFactory {
             console.log('runnable is: ', runnable);
             const x:any = runnable.Run('RUN!').then((res: any) => { console.log('DENTRO DE runnable, res:  -->', res); actions.push(res); });
             console.log(x);
+
+             */
           });
 
           const auxConfig : AgentConfig = new AgentConfig(
