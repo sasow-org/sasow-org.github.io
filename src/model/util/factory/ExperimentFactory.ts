@@ -21,13 +21,12 @@ export class ExperimentFactory {
           const actions : Action[] = [];
           agentConfigData.actionsData.forEach(async (actionData: ActionConfigData) => {
             const ActionReferenceClass = FactoryDynamicClass.getInstance().getAction(actionData.type);
-            console.log('ActionRefClass: ', ActionReferenceClass);
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             actions.push(new ActionReferenceClass(actionData.name, actionData.probability));
           });
 
-          console.log('actions es: ', actions);
+          console.log('agentConfigData es: =============', agentConfigData);
           const auxConfig : AgentConfig = new AgentConfig(
             agentConfigData.agentType,
             agentConfigData.nameConfig,

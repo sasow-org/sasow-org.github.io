@@ -24,10 +24,10 @@ export default function StartButton(props) {
             agentConfig.actions.forEach((action) => {
                 actions.push(new ActionConfigData(action.name, action.probability, action.type))
             })
-
+            console.log("agentConfig: ", agentConfig)
             configData.push(
                 new AgentConfigData(
-                    agentConfig.type,
+                    agentConfig.agentType,
                     agentConfig.configName,
                     agentConfig.initialState,
                     actions,

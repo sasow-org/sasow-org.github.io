@@ -28,18 +28,27 @@ export class FactoryDynamicClass {
   }
 
   public getEnvironment(environmentTypeKey: string) : Environment {
-    return this.environmentClasses[environmentTypeKey];
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.environmentClasses.get(environmentTypeKey);
   }
 
   public getAction(actionTypeKey: string) : Action {
-    return this.actionClasses[actionTypeKey];
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.actionClasses.get(actionTypeKey);
   }
 
   public getAgent(agentTypeKey: string) : Agent {
-    return this.agentClasses[agentTypeKey];
+    console.log('AgentTypeKey: ', agentTypeKey);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.agentClasses.get(agentTypeKey);
   }
 
   public getSimulation(simulationTypeKey: string) : Simulation {
-    return this.simulationClasses[simulationTypeKey];
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.simulationClasses.get(simulationTypeKey);
   }
 }

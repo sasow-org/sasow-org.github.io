@@ -4,9 +4,7 @@ import { IDataEssential } from '../util/data/interfaces/IDataEssential';
 import { IDataDetailed } from '../util/data/interfaces/IDataDetailed';
 import { RowData } from '../util/data/RowData';
 import { AgentConfig } from '../util/config/AgentConfig';
-import { AgentTwitterFactory } from '../util/factory/AgentTwitterFactory';
 import { DataHandler } from '../util/datahandler/DataHandler';
-import { TwitterAgent } from '../environments/twitter/TwitterAgent';
 import { FactoryDynamicClass } from '../util/factory/FactoryDynamicClass';
 
 export abstract class Environment implements IObservable, IDataEssential, IDataDetailed {
@@ -29,8 +27,6 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
   protected _seeds: Agent[];
 
   protected _agentsConfigs: AgentConfig[];
-
-  // protected actions: Action[]
 
   protected constructor(
     id: number,
@@ -73,9 +69,7 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
   }
 
   public initialize() : void {
-    // todo initialice
-
-    this._agentsConfigs.map((agentConfig: AgentConfig) => {
+    this._agentsConfigs.forEach((agentConfig: AgentConfig) => {
       this.createAgents(agentConfig);
     });
 
@@ -127,11 +121,14 @@ export abstract class Environment implements IObservable, IDataEssential, IDataD
     // agentConfig
     // Por la cantidad de agentes que hay en ese agent,
     console.log(`Starting create agents with AgentConfig: ${agentConfig.nameConfig}`);
+    console.log('AgentConfig in CreateAgents: ', agentConfig);
     for (let i = 0; i < agentConfig.quantityAgent; i++) {
-      const atf : AgentTwitterFactory = new AgentTwitterFactory(agentConfig);// TODO make generic to insert Facebook or Twitter agent.
-      const auxAgent: TwitterAgent = atf.create(i);
+      const agentReference = FactoryDynamicClass.getInstance().getAgent(agentConfig.agentType);
+      // eslint-disable-next-line new-cap,@typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line new-cap
+      const auxAgent = new agentReference(i, agentConfig);
       this.users.push(auxAgent);
-      // const auxAgentRef = FactoryDynamicClass.getInstance().getAgent();
       if (auxAgent.isSeed) {
         this.seeds.push(auxAgent);
       }
