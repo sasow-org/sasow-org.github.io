@@ -27,8 +27,6 @@ export default function ModalEditAgentConfig(props) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    console.log(agentConfig.agentType)
-
     const [selectedAction, setSelectedAction] = useState("")
 
     const handleChangeSelectAction = (event: React.ChangeEvent<HTMLInputElement>) => {

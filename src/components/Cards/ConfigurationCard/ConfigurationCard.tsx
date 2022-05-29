@@ -5,10 +5,7 @@ import {
 import AgentConfigsTable from "../../Table/AgentConfigsTable";
 import ModalNewAgentConfig from "../../Modals/ModalNewAgentConfig";
 
-export default function ConfigurationCard(props) {
-
-    console.log(props.experimentConfig)
-
+export default function ConfigurationCard() {
     return <Card style={{
         padding:"15px",
     }} >
@@ -17,10 +14,10 @@ export default function ConfigurationCard(props) {
                 <h1>Configuration Card</h1>
             </Grid>
             <Grid alignContent="center" item xs={4}>
-                <ModalNewAgentConfig experimentConfig={props.experimentConfig}/>
+                <ModalNewAgentConfig />
             </Grid>
             <Grid item xs={12}>
-                <AgentConfigsTable experimentConfig={props.experimentConfig} />
+                <AgentConfigsTable />
             </Grid>
 
         </Grid>

@@ -17,7 +17,7 @@ const style = {
     p: 4,
 };
 
-export default function ModalNewAgentConfig(props) {
+export default function ModalNewAgentConfig() {
 
     const typesArray = ['TwitterAgent', 'FacebookAgent']
     const actionsArray = ['read', "share"];
@@ -74,9 +74,7 @@ export default function ModalNewAgentConfig(props) {
     const actionsList = []
 
     const onClickAddAction = () => {
-        console.log("Action List is: ", actionsList)
         actionsList.push(getAction());
-        console.log("after click the action list is : ", actionsList)
     }
 
     function renderTable() {

@@ -40,7 +40,7 @@ export class FactoryDynamicClass {
   }
 
   public getAgent(agentTypeKey: string) : Agent {
-    console.log('AgentTypeKey: ', agentTypeKey);
+    // console.log('AgentTypeKey: ', agentTypeKey);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return this.agentClasses.get(agentTypeKey);

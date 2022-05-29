@@ -7,8 +7,9 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import StartButton from "./Buttons/StartButton";
 import {Button, Container, createTheme, Menu, MenuItem, Stack, ThemeProvider} from "@mui/material";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import {ExperimentConfigContext} from "../App";
 
 const pages = ['New Experiment', 'Load Experiment', 'Save Experiment'];
 
@@ -23,7 +24,7 @@ const darkTheme = createTheme({
 });
 
 
-export default function NavBar(props) {
+export default function NavBar() {
 
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -138,7 +139,7 @@ export default function NavBar(props) {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <StartButton experimentConfig={props.experimentConfig}/>
+                        <StartButton/>
                     </Box>
                 </Toolbar>
             </Container>)

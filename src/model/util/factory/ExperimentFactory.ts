@@ -12,6 +12,8 @@ export class ExperimentFactory {
   public createExperiment(
     experimentConfigData: ExperimentConfigData,
   ) : GenericExperiment {
+    console.log('On factory Experiment ');
+    console.log(experimentConfigData);
     const experimentConfig : ExperimentConfig = new ExperimentConfig(experimentConfigData.experimentType, experimentConfigData.name, experimentConfigData.description, experimentConfigData.repetitions, experimentConfigData.essentialData, experimentConfigData.detailedData);
     const exp : GenericExperiment = new GenericExperiment(
       experimentConfig,
@@ -25,8 +27,6 @@ export class ExperimentFactory {
             // @ts-ignore
             actions.push(new ActionReferenceClass(actionData.name, actionData.probability));
           });
-
-          console.log('agentConfigData es: =============', agentConfigData);
           const auxConfig : AgentConfig = new AgentConfig(
             agentConfigData.agentType,
             agentConfigData.nameConfig,

@@ -10,12 +10,13 @@ import {
 } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import ModalEditAgentConfig from "../Modals/ModalEditAgentConfig";
+import {ExperimentConfigContext} from "../../App";
 
-export default function AgentConfigsTable(props) {
+export default function AgentConfigsTable() {
 
-    const agentsConfig = props.experimentConfig.agentsConfigs;
+    const agentsConfig = useContext(ExperimentConfigContext).agentsConfigs;
 
     let states = [];
     agentsConfig.map(ag => {
@@ -23,22 +24,17 @@ export default function AgentConfigsTable(props) {
     })
     const [checkedSeedList, setCheckedSeedList] = useState(states);
 
-    console.log(agentsConfig)
-
     const handleSeedAgent = (event: React.ChangeEvent<HTMLInputElement>, index) => {
-        //console.log("event.target.checked: ",event.target.checked)
-        //console.log("pre sett: ",props.experimentConfig.agentsConfigs[index].isSeed, " index: ", index)
-        //console.log("states pre set: ", states)
 
-        props.experimentConfig.agentsConfigs[index].isSeed = event.target.checked;
+        agentsConfig[index].isSeed = event.target.checked;
         const statesCopy = []
         states.map(state => {
             statesCopy.push(state)
         })
         statesCopy[index] = event.target.checked;
         setCheckedSeedList(statesCopy)
-        //console.log("post sett: ",props.experimentConfig.agentsConfigs[index].isSeed, " index: ", index)
 
+        console.log("change state, agentconfig is: ", agentsConfig)
     }
 
     return (

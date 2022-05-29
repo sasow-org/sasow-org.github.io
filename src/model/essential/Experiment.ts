@@ -43,10 +43,10 @@ export abstract class Experiment implements IObservable, IDataEssential {
     console.log('this._maxRepetitions: ', this._maxRepetitions);
     console.log('this._repetitionNumber< this._maxRepetitions: ', this._repetitionNumber < this._maxRepetitions);
     while (this._repetitionNumber < this._maxRepetitions) {
-      console.log(`Starting run (${this._repetitionNumber} ) of ${this._maxRepetitions}`);
+      console.log(`Starting run (${this._repetitionNumber + 1} ) of ${this._maxRepetitions}`);
       this.initialize(this._repetitionNumber);
       this._simulation.run();
-      console.log(`Ending run (${this._repetitionNumber} ) of ${this._maxRepetitions}`);
+      console.log(`Ending run (${this._repetitionNumber + 1} ) of ${this._maxRepetitions}`);
       this.repetitionNumber = ++this._repetitionNumber;
     }
     console.log('Ending Experiment ');

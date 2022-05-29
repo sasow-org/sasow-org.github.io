@@ -1,11 +1,12 @@
 import {Card, Grid, TextField} from "@mui/material";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import NetworkSelector from "../../TextField/NetworkSelector";
+import {ExperimentConfigContext} from "../../../App";
 
 
-export default function ExperimentInputCard(props) {
+export default function ExperimentInputCard() {
 
-    const [experimentConfig, setExperimentConfig] = useState(props.experimentConfig);
+    const experimentConfig= useContext(ExperimentConfigContext);
 
 
     const [experimentName, setExperimentName] = useState(experimentConfig.experimentName);
@@ -17,35 +18,35 @@ export default function ExperimentInputCard(props) {
 
     //todo handle change experiment name
     const handleExperimentNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("Experiment config pre: ", experimentConfig)
         setExperimentName(event.target.value);
-        props.experimentConfig.experimentName = event.target.value
-        console.log("experimentConfig es: ",  experimentConfig)
+        experimentConfig.experimentName = event.target.value
     };
 
     const handleRepetitionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        console.log("Pre Repetitions: ", experimentConfig)
         setRepetitions(parseInt(event.target.value))
-        props.experimentConfig.repetitions = parseInt(event.target.value)
+        experimentConfig.repetitions = parseInt(event.target.value)
+        console.log("Post Repetitions: ", experimentConfig)
     };
 
     const handleNetworkSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNetworkSize(parseInt(event.target.value))
-        props.experimentConfig.networkSize = parseInt(event.target.value);
+        experimentConfig.networkSize = parseInt(event.target.value);
     };
 
     const handleSeedSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSeedSize(parseInt(event.target.value))
-        props.experimentConfig.seedSize = parseInt(event.target.value);
+        experimentConfig.seedSize = parseInt(event.target.value);
     };
 
     const handlePeriodsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPeriods(parseInt(event.target.value))
-        props.experimentConfig.periods = parseInt(event.target.value);
+        experimentConfig.periods = parseInt(event.target.value);
     };
 
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setDescription(event.target.value)
-        props.experimentConfig.description = event.target.value
+        experimentConfig.description = event.target.value
     };
 
 
@@ -58,7 +59,7 @@ export default function ExperimentInputCard(props) {
     }}>
         <Grid container spacing={1}>
             <Grid item xs ={12}>
-                <NetworkSelector experimentConfig={experimentConfig}/>
+                <NetworkSelector/>
             </Grid>
             <Grid item xs={12}>
                 <h3>ExperimentInputConfigurator</h3>

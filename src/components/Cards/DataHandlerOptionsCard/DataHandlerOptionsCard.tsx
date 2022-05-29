@@ -1,17 +1,18 @@
 import { Card, FormControlLabel, Grid, Switch} from "@mui/material";
-import React from "react";
+import React, {useContext} from "react";
+import {ExperimentConfigContext} from "../../../App";
 
-export default function DataHandlerOptionsCard(props) {
+export default function DataHandlerOptionsCard() {
 
-    const [checkedEssential, setCheckedEssential] = React.useState(props.experimentConfig.essentialData);
+    const experimentConfig= useContext(ExperimentConfigContext);
 
-    const [checkedDetailed, setCheckedDetailed] = React.useState(props.experimentConfig.detailedData)
+    const [checkedEssential, setCheckedEssential] = React.useState(experimentConfig.essentialData);
+
+    const [checkedDetailed, setCheckedDetailed] = React.useState(experimentConfig.detailedData)
 
     const handleDetailedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        //console.log("OnHandleChange antes de setCheked: ",experimentConfig)
         setCheckedDetailed(event.target.checked);
-        props.experimentConfig.detailedData = event.target.checked;
-        //console.log("OnHandleChange despues de setCheked: ",experimentConfig)
+        experimentConfig.detailedData = event.target.checked;
     };
 
 

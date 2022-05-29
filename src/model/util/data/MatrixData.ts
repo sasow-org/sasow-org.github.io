@@ -14,7 +14,6 @@ export class MatrixData {
   }
 
   public addRow(row: RowData) : void {
-    // console.log("Adding rows, this is the row: "+ row.rows);
     if (this._head === []) {
       this._head = row.head;
       this._columns.push(row.head);

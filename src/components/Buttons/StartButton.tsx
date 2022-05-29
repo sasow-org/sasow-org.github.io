@@ -1,19 +1,25 @@
 import {DataHandlerConfig} from "../../model/util/config/DataHandlerConfig";
 import {Button} from "@mui/material";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {ExperimentFactory} from "../../model/util/factory/ExperimentFactory";
 import {ExperimentConfigData} from "../../model/util/config/data/ExperimentConfigData";
 import {AgentConfigData} from "../../model/util/config/data/AgentConfigData";
 import {ActionConfigData} from "../../model/util/config/data/ActionConfigData";
+import {ExperimentConfigContext} from "../../App";
 
-export default function StartButton(props) {
+export default function StartButton() {
 
-    const [experimentConfig, setExperimentConfig] = useState(props.experimentConfig)
 
-    const repetitions : number = experimentConfig.repetitions;
-    const name: string = experimentConfig.experimentName;
-    const description: string = experimentConfig.description;
+
+    //const [experimentConfig, setExperimentConfig] = useState(props.experimentConfig)
+
+    const experimentConfig = useContext(ExperimentConfigContext);
+
+    console.log("Context is --> ", experimentConfig)
+    //const repetitions : number = experimentConfig.repetitions;
+    //const name: string = experimentConfig.experimentName;
+    //const description: string = experimentConfig.description;
 
     function getAgentConfigData() : AgentConfigData[] {
         let configData :AgentConfigData[] = []
@@ -24,7 +30,7 @@ export default function StartButton(props) {
             agentConfig.actions.forEach((action) => {
                 actions.push(new ActionConfigData(action.name, action.probability, action.type))
             })
-            console.log("agentConfig: ", agentConfig)
+
             configData.push(
                 new AgentConfigData(
                     agentConfig.agentType,
@@ -46,9 +52,9 @@ export default function StartButton(props) {
 
         const experimentConfigData : ExperimentConfigData = new ExperimentConfigData(
             experimentConfig.experimentType,
-            name,
-            description,
-            repetitions,
+            experimentConfig.experimentName,
+            experimentConfig.description,
+            experimentConfig.repetitions,
             experimentConfig.essentialData,
             experimentConfig.detailedData,
             experimentConfig.periods,

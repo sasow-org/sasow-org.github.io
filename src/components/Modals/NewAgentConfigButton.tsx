@@ -1,4 +1,4 @@
 
-export default function NewAgentConfigButton(props) {
+export default function NewAgentConfigButton() {
 
 }

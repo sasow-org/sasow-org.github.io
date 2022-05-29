@@ -1,6 +1,7 @@
 import * as React from "react";
 import {TextField} from "@mui/material";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {ExperimentConfigContext} from "../../App";
 
 const networkOptions = [
     {
@@ -13,13 +14,16 @@ const networkOptions = [
     }
 ]
 
-export default function NetworkSelector(props) {
+export default function NetworkSelector() {
 
-    const [network, setNetwork] = useState(props.experimentConfig.experimentType)
+
+    const experimentConfig= useContext(ExperimentConfigContext);
+
+    const [network, setNetwork] = useState(experimentConfig.experimentType)
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNetwork(event.target.value)
-        props.experimentConfig.experimentType = event.target.value
+        experimentConfig.experimentType = event.target.value
     }
 
     return(
