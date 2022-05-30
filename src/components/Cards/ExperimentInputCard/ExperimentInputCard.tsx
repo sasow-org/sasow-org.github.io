@@ -2,6 +2,7 @@ import {Card, Grid, TextField} from "@mui/material";
 import React, {useContext, useState} from "react";
 import NetworkSelector from "../../TextField/NetworkSelector";
 import {ExperimentConfigContext} from "../../../App";
+import DataHandlerOptionsCard from "../DataHandlerOptionsCard/DataHandlerOptionsCard";
 
 
 export default function ExperimentInputCard() {
@@ -12,7 +13,6 @@ export default function ExperimentInputCard() {
     const [experimentName, setExperimentName] = useState(experimentConfig.experimentName);
     const [repetitions, setRepetitions] = useState(experimentConfig.repetitions);
     const [networkSize, setNetworkSize] = useState(experimentConfig.networkSize);
-    const [seedSize, setSeedSize] = useState(experimentConfig.seedSize);
     const [periods, setPeriods] = useState(experimentConfig.periods);
     const [description, setDescription] = React.useState(experimentConfig.description);
 
@@ -34,11 +34,6 @@ export default function ExperimentInputCard() {
         experimentConfig.networkSize = parseInt(event.target.value);
     };
 
-    const handleSeedSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSeedSize(parseInt(event.target.value))
-        experimentConfig.seedSize = parseInt(event.target.value);
-    };
-
     const handlePeriodsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPeriods(parseInt(event.target.value))
         experimentConfig.periods = parseInt(event.target.value);
@@ -58,6 +53,9 @@ export default function ExperimentInputCard() {
         padding:"15px"
     }}>
         <Grid container spacing={1}>
+            <Grid item xs={12}>
+                <DataHandlerOptionsCard/>
+            </Grid>
             <Grid item xs ={12}>
                 <NetworkSelector/>
             </Grid>
@@ -89,16 +87,6 @@ export default function ExperimentInputCard() {
                     label="Network Size"
                     value={networkSize}
                     onChange={handleNetworkSizeChange}
-                />
-            </Grid>
-            <Grid item xs={12}>
-                <TextField
-                    fullWidth
-                    required
-                    label="Seed Size"
-                    value={seedSize}
-                    onChange={handleSeedSizeChange}
-                    disabled
                 />
             </Grid>
             <Grid item xs={12}>

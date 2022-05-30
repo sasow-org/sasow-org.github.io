@@ -19,19 +19,13 @@ export default function DataHandlerOptionsCard() {
     return <Card>
         <Grid container spacing={1}>
             <Grid item xs={12}>
-                <h1>DataHandlerConfigurator</h1>
+                <h4>DataHandlerConfigurator</h4>
             </Grid>
             <Grid item xs={6}>
-                <h3>
-                    Essential Data
-                </h3>
-                <FormControlLabel control={<Switch checked={checkedEssential} />} label="Label" />
+                <FormControlLabel control={<Switch checked={checkedEssential} />} label="Essential Data" />
             </Grid>
             <Grid item xs={6}>
-                <h3>
-                    Detailed Data
-                </h3>
-                <FormControlLabel control={<Switch checked={checkedDetailed}  onChange={handleDetailedChange}/>} label="Label" />
+                <FormControlLabel control={<Switch checked={checkedDetailed}  onChange={handleDetailedChange}/>} label="Detailed Data" />
             </Grid>
         </Grid>
     </Card>

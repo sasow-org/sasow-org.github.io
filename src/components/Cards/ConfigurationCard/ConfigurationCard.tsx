@@ -2,8 +2,8 @@ import {
     Card,
     Grid,
 } from "@mui/material";
-import AgentConfigsTable from "../../Table/AgentConfigsTable";
 import ModalNewAgentConfig from "../../Modals/ModalNewAgentConfig";
+import DataGridAgent from "../../DataGrid/DataGridAgents";
 
 export default function ConfigurationCard() {
     return <Card style={{
@@ -17,7 +17,7 @@ export default function ConfigurationCard() {
                 <ModalNewAgentConfig />
             </Grid>
             <Grid item xs={12}>
-                <AgentConfigsTable />
+                <DataGridAgent />
             </Grid>
 
         </Grid>

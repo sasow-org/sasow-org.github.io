@@ -26,7 +26,7 @@ const agentConfig1 = {
     ]
     ,
     isSeed: false,
-    quantityAgent: 950
+    percentageAgent: 95
 }
 
 const agentConfig2 = {
@@ -48,7 +48,7 @@ const agentConfig2 = {
         },
     ],
     isSeed: true,
-    quantityAgent: 50
+    percentageAgent:5
 }
 
 const experimentConfig = {

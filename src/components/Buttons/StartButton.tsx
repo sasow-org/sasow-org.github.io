@@ -30,7 +30,6 @@ export default function StartButton() {
             agentConfig.actions.forEach((action) => {
                 actions.push(new ActionConfigData(action.name, action.probability, action.type))
             })
-
             configData.push(
                 new AgentConfigData(
                     agentConfig.agentType,
@@ -38,10 +37,11 @@ export default function StartButton() {
                     agentConfig.initialState,
                     actions,
                     agentConfig.isSeed,
-                    agentConfig.quantityAgent,
+                    agentConfig.percentageAgent*experimentConfig.networkSize/100,
                     agentConfig.percentageFollowers,
                     agentConfig.percentageFollowings
                 ))
+
         })
 
         return configData;

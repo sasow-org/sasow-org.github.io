@@ -27,6 +27,7 @@ export class ExperimentFactory {
             // @ts-ignore
             actions.push(new ActionReferenceClass(actionData.name, actionData.probability));
           });
+          console.log('agentConfigData.quantityAgent -> ', agentConfigData.quantityAgent);
           const auxConfig : AgentConfig = new AgentConfig(
             agentConfigData.agentType,
             agentConfigData.nameConfig,

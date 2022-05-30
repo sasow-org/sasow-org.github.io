@@ -1,67 +1,45 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Box, Button, Container, Grid, MenuItem, Modal, TextField} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import ActionConfigsTable from "../Table/ActionConfigsTable";
 import AddIcon from '@mui/icons-material/Add';
+import {ExperimentConfigContext} from "../../App";
+import DataGridActions from "../DataGrid/DataGridActions";
 
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
 };
 
-export default function ModalEditAgentConfig(props) {
+export default function ModalEditAgentConfig(agentConfig) {
+
+    //console.log("on modal: ", agentConfig)
 
     const typesArray = ['TwitterAgent', 'FacebookAgent']
     const actionsArray = ['read', "share"];
 
-    const agentConfig = props.agentConfig;
+    //const experimentConfig = useContext(ExperimentConfigContext)
+    //console.log("Agent Config Post Index ---> ", experimentConfig.agentsConfigs)
+    //console.log("Experiment Config Post Index ---> ", experimentConfig)
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [selectedAction, setSelectedAction] = useState("")
-
-    const handleChangeSelectAction = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedAction(event.target.value);
-    }
-
-
-    // Config Name
-    const [configName, setConfigName] = useState(agentConfig.configName)
-    const handleChangeConfigName = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setConfigName(event.target.value);
-    }
-
-    // Followers Percentage
-    const [followersPercentage, setFollowersPercentage] = useState(agentConfig.percentageFollowers);
-    const handleChangeFollowersPercentage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFollowersPercentage(parseFloat(event.target.value))
-    }
-
-    // Followings Percentage
-    const [followingsPercentage, setFollowingsPercentage] = useState(agentConfig.percentageFollowers);
-    const handleChangeFollowingsPercentage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFollowingsPercentage(parseFloat(event.target.value))
-    }
-
-    // Agent Type, remember this is for select the class was need to instantiate.
-    const [selectedAgentType, setSelectedAgentType] = useState(agentConfig.agentType)
     const handleChangeSelectAgentType = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedAgentType(event.target.value)
+        agentConfig.agentType = event.target.value;
     }
 
 
 
     return (
-        <Container>
+        <div>
             <Button onClick={handleOpen}>
                 <EditIcon/>
             </Button>
@@ -106,25 +84,10 @@ export default function ModalEditAgentConfig(props) {
                                 id="outlined-select-currency"
                                 select
                                 label="Agent Type"
-                                value={selectedAgentType}
+                                value={agentConfig.agentType}
                                 onChange={handleChangeSelectAgentType}
                             >
                                 {typesArray.map((option, i) => (
-                                    <MenuItem key={i} value={option}>
-                                        {option}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                select
-                                label="Action"
-                                value={selectedAgentType}
-                                onChange={handleChangeSelectAgentType}
-                            >
-                                {actionsArray.map((option, i) => (
                                     <MenuItem key={i} value={option}>
                                         {option}
                                     </MenuItem>
@@ -137,14 +100,14 @@ export default function ModalEditAgentConfig(props) {
                             </Button>
                         </Grid>
                         <Grid item xs={12}>
-                            <ActionConfigsTable actions={agentConfig.actions} />
+
                         </Grid>
                         <Grid item xs={12}>
-
+                            <DataGridActions {...agentConfig}/>
                         </Grid>
                     </Grid>
                 </Box>
             </Modal>
-        </Container>
+        </div>
     );
 }

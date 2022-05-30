@@ -43,7 +43,8 @@
     "no-mixed-operators": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "no-eval": "off",
-    "no-implied-eval": "off"
+    "no-implied-eval": "off",
+    "linebreak-style": "off"
   }
 }
 

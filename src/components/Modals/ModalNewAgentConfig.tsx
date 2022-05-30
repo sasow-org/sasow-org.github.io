@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {Box, Button, Grid, MenuItem, Modal, TextField} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from "@mui/icons-material/Edit";
-import ActionConfigsTable from "../Table/ActionConfigsTable";
+import DataGridActions from "../DataGrid/DataGridActions";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -76,16 +76,6 @@ export default function ModalNewAgentConfig() {
     const onClickAddAction = () => {
         actionsList.push(getAction());
     }
-
-    function renderTable() {
-        return (
-            <ActionConfigsTable actions={actionsList} />
-        )
-    }
-
-    useEffect(() => {
-        renderTable()
-    })
 
     return (
         <div>
@@ -164,7 +154,6 @@ export default function ModalNewAgentConfig() {
                             </Button>
                         </Grid>
                         <Grid item xs={12}>
-                            {renderTable()}
                         </Grid>
                         <Grid item xs={12}>
                             <Button variant="contained">

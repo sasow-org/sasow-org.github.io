@@ -14,17 +14,17 @@ export default function TemplateLayout(){
     //const experimentConfig= useContext(ExperimentConfigContext);
 
     return (
-        <Box mt={2} paddingX={"15px"} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
+        <Box mt={2} paddingX={"15px"} maxHeight={"max-content"} height={"max-content"} style={{backgroundColor: "darkgray",
         }}>
             <Grid container spacing={1}>
-                <Grid item xs={4}>
-                    <ExperimentInputCard/>
-                </Grid>
-                <Grid item xs={8}>
-                    <ConfigurationCard/>
-                </Grid>
                 <Grid item xs={12}>
                     <DataHandlerOptionsCard/>
+                </Grid>
+                <Grid item xs={6} md={6} sm={12}>
+                    <ExperimentInputCard/>
+                </Grid>
+                <Grid item xs={6} md={6} sm={12}>
+                    <ConfigurationCard/>
                 </Grid>
                 <Grid item xs={12}>
                     <OutputIterationsCard />
