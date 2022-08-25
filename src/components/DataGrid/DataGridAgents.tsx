@@ -13,9 +13,6 @@ export default function DataGridAgent() {
     console.log("Printing Agents")
     console.log(agentsConfig)
 
-
-
-
     const handleSeedAgent = (event: React.ChangeEvent<HTMLInputElement>, index) => {
         console.log("agentsConfig[index].isSeed: ", agentsConfig[index].isSeed);
         console.log("event.target.checked: ", event.target.checked)
@@ -43,7 +40,7 @@ export default function DataGridAgent() {
         {
             field: 'configName',
             headerName: 'Config Name',
-            width: 200,
+            minWidth: 130,
         },
         {
             field: 'percentageAgent',
@@ -69,9 +66,10 @@ export default function DataGridAgent() {
             width: 80,
             renderCell: (cellParam) => {
                 //console.log("On Edit, CellParam: ",cellParam);
-
+                //let agentConfig = agentsConfig[cellParam.row.id];
+                const index = cellParam.row.id;
                 return(
-                    <ModalEditAgentConfig {...agentsConfig[cellParam.row.id]} />
+                    <ModalEditAgentConfig {...index} />
                 );
             }
         },
@@ -125,15 +123,15 @@ export default function DataGridAgent() {
     }
 
     return (
-        <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-                onCellEditStop={(selected,event)=>updateAgentConfig(selected, event)}
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                rowHeight={150}
-            />
-        </div>
+        <DataGrid
+            onCellEditStop={(selected,event)=>updateAgentConfig(selected, event)}
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            rowHeight={150}
+            headerHeight={70}
+            autoHeight={true}
+        />
     );
 }

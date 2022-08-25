@@ -3,6 +3,7 @@ import React, {useContext, useState} from "react";
 import NetworkSelector from "../../TextField/NetworkSelector";
 import {ExperimentConfigContext} from "../../../App";
 import DataHandlerOptionsCard from "../DataHandlerOptionsCard/DataHandlerOptionsCard";
+import Typography from "@mui/material/Typography";
 
 
 export default function ExperimentInputCard() {
@@ -60,7 +61,9 @@ export default function ExperimentInputCard() {
                 <NetworkSelector/>
             </Grid>
             <Grid item xs={12}>
-                <h3>ExperimentInputConfigurator</h3>
+                <Typography variant={'h5'}>
+                    Experiment Configurator
+                </Typography>
             </Grid>
             <Grid item xs={12}>
                 <TextField

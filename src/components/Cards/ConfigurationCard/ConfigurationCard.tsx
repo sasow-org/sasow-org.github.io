@@ -4,6 +4,7 @@ import {
 } from "@mui/material";
 import ModalNewAgentConfig from "../../Modals/ModalNewAgentConfig";
 import DataGridAgent from "../../DataGrid/DataGridAgents";
+import Typography from "@mui/material/Typography";
 
 export default function ConfigurationCard() {
     return <Card style={{
@@ -11,15 +12,16 @@ export default function ConfigurationCard() {
     }} >
         <Grid container spacing={1}>
             <Grid item xs={8}>
-                <h1>Configuration Card</h1>
+                <Typography variant={'h5'}>
+                    Agents Configurator
+                </Typography>
             </Grid>
-            <Grid alignContent="center" item xs={4}>
+            <Grid item xs={4}>
                 <ModalNewAgentConfig />
             </Grid>
             <Grid item xs={12}>
                 <DataGridAgent />
             </Grid>
-
         </Grid>
     </Card>
 }

@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 import TemplateLayout from "./components/TemplateLayout";
 
 //agenttype deberia hacer referencia a la clase del objeto que debemos instanciar
-const agentConfig1 = {
+let agentConfig1 = {
     initialState: 0,
     configName: "agent config 1",
     percentageFollowers: 1,
@@ -29,7 +29,7 @@ const agentConfig1 = {
     percentageAgent: 95
 }
 
-const agentConfig2 = {
+let agentConfig2 = {
     initialState: 2,
     configName: "agent config 2",
     percentageFollowers: 1,
@@ -51,13 +51,13 @@ const agentConfig2 = {
     percentageAgent:5
 }
 
-const experimentConfig = {
+let experimentConfig = {
     experimentName: "Experiment Name Default",
     repetitions: 1,
     networkSize: 1000,
     seedSize: 50,
     periods: 20,
-    description: "asdas",
+    description: "Default Description",
     agentsConfigs: [
         agentConfig1,agentConfig2
     ],
@@ -66,21 +66,33 @@ const experimentConfig = {
     experimentType: "TwitterConfig"//referencia a la clase que se deberia instanciar
 };
 
-export const ExperimentConfigContext = createContext(experimentConfig);
+let emptyExperimentConfig = {
+    experimentName: "Experiment Name Default",
+    repetitions: 0,
+    networkSize: 0,
+    seedSize: 0,
+    periods: 0,
+    description: "Default Description",
+    agentsConfigs: [],
+    essentialData: true,
+    detailedData: true,
+    experimentType: "TwitterConfig"//referencia a la clase que se deberia instanciar
+};
+
+
+export const ExperimentConfigContext = createContext(emptyExperimentConfig);
 
 function App() {
 
     return (
       <div className="App">
-          <ExperimentConfigContext.Provider value={experimentConfig}>
-              <BrowserRouter>
-                  <NavBar/>
-                  <Box mt={2} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
-                  }}>
-                      <TemplateLayout/>
-                  </Box>
-              </BrowserRouter>
-          </ExperimentConfigContext.Provider>
+          <BrowserRouter>
+              <NavBar/>
+              <Box mt={2} maxHeight={1000} height={1000} style={{backgroundColor: "darkgray",
+              }}>
+                  <TemplateLayout/>
+              </Box>
+          </BrowserRouter>
       </div>
   )
 }

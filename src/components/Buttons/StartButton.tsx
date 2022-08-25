@@ -10,16 +10,9 @@ import {ExperimentConfigContext} from "../../App";
 
 export default function StartButton() {
 
-
-
-    //const [experimentConfig, setExperimentConfig] = useState(props.experimentConfig)
-
     const experimentConfig = useContext(ExperimentConfigContext);
 
     console.log("Context is --> ", experimentConfig)
-    //const repetitions : number = experimentConfig.repetitions;
-    //const name: string = experimentConfig.experimentName;
-    //const description: string = experimentConfig.description;
 
     function getAgentConfigData() : AgentConfigData[] {
         let configData :AgentConfigData[] = []

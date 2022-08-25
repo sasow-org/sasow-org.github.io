@@ -1,6 +1,7 @@
 import { Card, FormControlLabel, Grid, Switch} from "@mui/material";
 import React, {useContext} from "react";
 import {ExperimentConfigContext} from "../../../App";
+import Typography from "@mui/material/Typography";
 
 export default function DataHandlerOptionsCard() {
 
@@ -19,7 +20,9 @@ export default function DataHandlerOptionsCard() {
     return <Card>
         <Grid container spacing={1}>
             <Grid item xs={12}>
-                <h4>DataHandlerConfigurator</h4>
+                <Typography variant={'h5'}>
+                    DataHandler Configurator
+                </Typography>
             </Grid>
             <Grid item xs={6}>
                 <FormControlLabel control={<Switch checked={checkedEssential} />} label="Essential Data" />

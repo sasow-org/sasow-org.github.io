@@ -1,18 +1,37 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ExperimentConfigContext} from "../../App";
-import {DataGrid, GridColDef} from "@mui/x-data-grid";
+import {DataGrid, GridColDef, useGridApiRef} from "@mui/x-data-grid";
 import * as React from "react";
 import {Button, Switch} from "@mui/material";
-import ModalEditAgentConfig from "../Modals/ModalEditAgentConfig";
 import DeleteIcon from "@mui/icons-material/Delete";
+
+
+export const getRows = (agentConfig) => {
+    const getRow = (action, index) => {
+        return {
+            id: index,
+            actionName: action.name,
+            actionProbability: action.probability,
+            actionType: action.type
+        }
+    };
+
+    let aux = []
+    let index = 0
+    agentConfig.actions.forEach((action) => {
+        aux.push(getRow(action, index));
+        index+=1;
+    })
+
+    return aux;
+}
+
+
+
 
 export default function DataGridActions(agentConfig){
 
     console.log("On Data Grid Actions : ", agentConfig)
-
-    //let agentConfig = props.agentConfig;
-
-
 
     const columns: GridColDef[] = [
         {
@@ -32,8 +51,14 @@ export default function DataGridActions(agentConfig){
             width: 80,
             renderCell: (cellParam) => {
                 //console.log("CellParam --> ", cellParam.row.id);
+
+                const handleDelete = (event) => {
+                    console.log("OnHandle Delete")
+                    console.log("Event: ", event)
+                }
+
                 return (
-                    <Button>
+                    <Button onClick={handleDelete}>
                         <DeleteIcon/>
                     </Button>
                 );
@@ -41,28 +66,15 @@ export default function DataGridActions(agentConfig){
         },
     ];
 
+    const [rows, setRows] = useState([]);
 
-    const getRows = () => {
-        const getRow = (action, index) => {
-            return {
-                id: index,
-                actionName: action.name,
-                actionProbability: action.probability
-            }
-        };
-
-        let aux = []
-        let index = 0
-        agentConfig.actions.forEach((action) => {
-            aux.push(getRow(action, index));
-            index+=1;
-        })
-
-        return aux;
-    }
-
-    const rows = getRows();
-
+    useEffect(() => {
+        console.log(agentConfig.actions)
+        if(agentConfig.actions !== []){
+            setRows(getRows(agentConfig));
+        }
+    },[])
+    //setRows(getRows(agentConfig))
     return (
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid
